@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		EBDDD4A21A199B3800DFEED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */; };
 		EBDDD4A51A199B3800DFEED9 /* Concierge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A31A199B3800DFEED9 /* Concierge.xcdatamodeld */; };
-		EBDDD4A71A199B3800DFEED9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A61A199B3800DFEED9 /* ViewController.swift */; };
 		EBDDD4AA1A199B3800DFEED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4A81A199B3800DFEED9 /* Main.storyboard */; };
 		EBDDD4AC1A199B3800DFEED9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4AB1A199B3800DFEED9 /* Images.xcassets */; };
 		EBDDD4AF1A199B3800DFEED9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4AD1A199B3800DFEED9 /* LaunchScreen.xib */; };
 		EBDDD4BB1A199B3800DFEED9 /* ConciergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4BA1A199B3800DFEED9 /* ConciergeTests.swift */; };
+		EBDDD4CB1A19A26A00DFEED9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4CA1A19A26A00DFEED9 /* SignUpViewController.swift */; };
+		EBDDD4CF1A19A37D00DFEED9 /* Password.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4CC1A19A37D00DFEED9 /* Password.png */; };
+		EBDDD4D01A19A37D00DFEED9 /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4CD1A19A37D00DFEED9 /* User.png */; };
+		EBDDD4D11A19A37D00DFEED9 /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4CE1A19A37D00DFEED9 /* Email.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +34,16 @@
 		EBDDD4A01A199B3800DFEED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBDDD4A41A199B3800DFEED9 /* Concierge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Concierge.xcdatamodel; sourceTree = "<group>"; };
-		EBDDD4A61A199B3800DFEED9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EBDDD4A91A199B3800DFEED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EBDDD4AB1A199B3800DFEED9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EBDDD4AB1A199B3800DFEED9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Concierge/Images.xcassets; sourceTree = "<group>"; };
 		EBDDD4AE1A199B3800DFEED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EBDDD4B41A199B3800DFEED9 /* ConciergeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConciergeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBDDD4B91A199B3800DFEED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBDDD4BA1A199B3800DFEED9 /* ConciergeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciergeTests.swift; sourceTree = "<group>"; };
+		EBDDD4CA1A19A26A00DFEED9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = ../SignUpViewController.swift; sourceTree = "<group>"; };
+		EBDDD4CC1A19A37D00DFEED9 /* Password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Password.png; sourceTree = "<group>"; };
+		EBDDD4CD1A19A37D00DFEED9 /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = "<group>"; };
+		EBDDD4CE1A19A37D00DFEED9 /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */,
-				EBDDD4A61A199B3800DFEED9 /* ViewController.swift */,
-				EBDDD4A81A199B3800DFEED9 /* Main.storyboard */,
-				EBDDD4AB1A199B3800DFEED9 /* Images.xcassets */,
-				EBDDD4AD1A199B3800DFEED9 /* LaunchScreen.xib */,
+				EBDDD4D41A19A39D00DFEED9 /* Controller */,
+				EBDDD4D31A19A39700DFEED9 /* View */,
+				EBDDD4D21A19A38E00DFEED9 /* Model */,
+				EBDDD4D51A19A3B100DFEED9 /* Images */,
 				EBDDD4A31A199B3800DFEED9 /* Concierge.xcdatamodeld */,
 				EBDDD49F1A199B3800DFEED9 /* Supporting Files */,
 			);
@@ -113,6 +119,42 @@
 				EBDDD4B91A199B3800DFEED9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EBDDD4D21A19A38E00DFEED9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		EBDDD4D31A19A39700DFEED9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4A81A199B3800DFEED9 /* Main.storyboard */,
+				EBDDD4AD1A199B3800DFEED9 /* LaunchScreen.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		EBDDD4D41A19A39D00DFEED9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4CA1A19A26A00DFEED9 /* SignUpViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		EBDDD4D51A19A3B100DFEED9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4CC1A19A37D00DFEED9 /* Password.png */,
+				EBDDD4CD1A19A37D00DFEED9 /* User.png */,
+				EBDDD4CE1A19A37D00DFEED9 /* Email.png */,
+				EBDDD4AB1A199B3800DFEED9 /* Images.xcassets */,
+			);
+			name = Images;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,8 +237,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBDDD4D11A19A37D00DFEED9 /* Email.png in Resources */,
 				EBDDD4AA1A199B3800DFEED9 /* Main.storyboard in Resources */,
 				EBDDD4AF1A199B3800DFEED9 /* LaunchScreen.xib in Resources */,
+				EBDDD4D01A19A37D00DFEED9 /* User.png in Resources */,
+				EBDDD4CF1A19A37D00DFEED9 /* Password.png in Resources */,
 				EBDDD4AC1A199B3800DFEED9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,7 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBDDD4A71A199B3800DFEED9 /* ViewController.swift in Sources */,
+				EBDDD4CB1A19A26A00DFEED9 /* SignUpViewController.swift in Sources */,
 				EBDDD4A21A199B3800DFEED9 /* AppDelegate.swift in Sources */,
 				EBDDD4A51A199B3800DFEED9 /* Concierge.xcdatamodeld in Sources */,
 			);
