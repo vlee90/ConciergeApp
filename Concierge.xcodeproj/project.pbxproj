@@ -1,0 +1,439 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EBDDD4A21A199B3800DFEED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */; };
+		EBDDD4A51A199B3800DFEED9 /* Concierge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A31A199B3800DFEED9 /* Concierge.xcdatamodeld */; };
+		EBDDD4A71A199B3800DFEED9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A61A199B3800DFEED9 /* ViewController.swift */; };
+		EBDDD4AA1A199B3800DFEED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4A81A199B3800DFEED9 /* Main.storyboard */; };
+		EBDDD4AC1A199B3800DFEED9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4AB1A199B3800DFEED9 /* Images.xcassets */; };
+		EBDDD4AF1A199B3800DFEED9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4AD1A199B3800DFEED9 /* LaunchScreen.xib */; };
+		EBDDD4BB1A199B3800DFEED9 /* ConciergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4BA1A199B3800DFEED9 /* ConciergeTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EBDDD4B51A199B3800DFEED9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBDDD4941A199B3800DFEED9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBDDD49B1A199B3800DFEED9;
+			remoteInfo = Concierge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EBDDD49C1A199B3800DFEED9 /* Concierge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concierge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBDDD4A01A199B3800DFEED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EBDDD4A41A199B3800DFEED9 /* Concierge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Concierge.xcdatamodel; sourceTree = "<group>"; };
+		EBDDD4A61A199B3800DFEED9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EBDDD4A91A199B3800DFEED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EBDDD4AB1A199B3800DFEED9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EBDDD4AE1A199B3800DFEED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EBDDD4B41A199B3800DFEED9 /* ConciergeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConciergeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBDDD4B91A199B3800DFEED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBDDD4BA1A199B3800DFEED9 /* ConciergeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciergeTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EBDDD4991A199B3800DFEED9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBDDD4B11A199B3800DFEED9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EBDDD4931A199B3800DFEED9 = {
+			isa = PBXGroup;
+			children = (
+				EBDDD49E1A199B3800DFEED9 /* Concierge */,
+				EBDDD4B71A199B3800DFEED9 /* ConciergeTests */,
+				EBDDD49D1A199B3800DFEED9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EBDDD49D1A199B3800DFEED9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD49C1A199B3800DFEED9 /* Concierge.app */,
+				EBDDD4B41A199B3800DFEED9 /* ConciergeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EBDDD49E1A199B3800DFEED9 /* Concierge */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */,
+				EBDDD4A61A199B3800DFEED9 /* ViewController.swift */,
+				EBDDD4A81A199B3800DFEED9 /* Main.storyboard */,
+				EBDDD4AB1A199B3800DFEED9 /* Images.xcassets */,
+				EBDDD4AD1A199B3800DFEED9 /* LaunchScreen.xib */,
+				EBDDD4A31A199B3800DFEED9 /* Concierge.xcdatamodeld */,
+				EBDDD49F1A199B3800DFEED9 /* Supporting Files */,
+			);
+			path = Concierge;
+			sourceTree = "<group>";
+		};
+		EBDDD49F1A199B3800DFEED9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4A01A199B3800DFEED9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EBDDD4B71A199B3800DFEED9 /* ConciergeTests */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4BA1A199B3800DFEED9 /* ConciergeTests.swift */,
+				EBDDD4B81A199B3800DFEED9 /* Supporting Files */,
+			);
+			path = ConciergeTests;
+			sourceTree = "<group>";
+		};
+		EBDDD4B81A199B3800DFEED9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4B91A199B3800DFEED9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EBDDD49B1A199B3800DFEED9 /* Concierge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBDDD4BE1A199B3800DFEED9 /* Build configuration list for PBXNativeTarget "Concierge" */;
+			buildPhases = (
+				EBDDD4981A199B3800DFEED9 /* Sources */,
+				EBDDD4991A199B3800DFEED9 /* Frameworks */,
+				EBDDD49A1A199B3800DFEED9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Concierge;
+			productName = Concierge;
+			productReference = EBDDD49C1A199B3800DFEED9 /* Concierge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EBDDD4B31A199B3800DFEED9 /* ConciergeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBDDD4C11A199B3800DFEED9 /* Build configuration list for PBXNativeTarget "ConciergeTests" */;
+			buildPhases = (
+				EBDDD4B01A199B3800DFEED9 /* Sources */,
+				EBDDD4B11A199B3800DFEED9 /* Frameworks */,
+				EBDDD4B21A199B3800DFEED9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EBDDD4B61A199B3800DFEED9 /* PBXTargetDependency */,
+			);
+			name = ConciergeTests;
+			productName = ConciergeTests;
+			productReference = EBDDD4B41A199B3800DFEED9 /* ConciergeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBDDD4941A199B3800DFEED9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = VincentLee;
+				TargetAttributes = {
+					EBDDD49B1A199B3800DFEED9 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					EBDDD4B31A199B3800DFEED9 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = EBDDD49B1A199B3800DFEED9;
+					};
+				};
+			};
+			buildConfigurationList = EBDDD4971A199B3800DFEED9 /* Build configuration list for PBXProject "Concierge" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EBDDD4931A199B3800DFEED9;
+			productRefGroup = EBDDD49D1A199B3800DFEED9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EBDDD49B1A199B3800DFEED9 /* Concierge */,
+				EBDDD4B31A199B3800DFEED9 /* ConciergeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EBDDD49A1A199B3800DFEED9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDDD4AA1A199B3800DFEED9 /* Main.storyboard in Resources */,
+				EBDDD4AF1A199B3800DFEED9 /* LaunchScreen.xib in Resources */,
+				EBDDD4AC1A199B3800DFEED9 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBDDD4B21A199B3800DFEED9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EBDDD4981A199B3800DFEED9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDDD4A71A199B3800DFEED9 /* ViewController.swift in Sources */,
+				EBDDD4A21A199B3800DFEED9 /* AppDelegate.swift in Sources */,
+				EBDDD4A51A199B3800DFEED9 /* Concierge.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBDDD4B01A199B3800DFEED9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDDD4BB1A199B3800DFEED9 /* ConciergeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EBDDD4B61A199B3800DFEED9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBDDD49B1A199B3800DFEED9 /* Concierge */;
+			targetProxy = EBDDD4B51A199B3800DFEED9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EBDDD4A81A199B3800DFEED9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBDDD4A91A199B3800DFEED9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EBDDD4AD1A199B3800DFEED9 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBDDD4AE1A199B3800DFEED9 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EBDDD4BC1A199B3800DFEED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EBDDD4BD1A199B3800DFEED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBDDD4BF1A199B3800DFEED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Concierge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EBDDD4C01A199B3800DFEED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Concierge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EBDDD4C21A199B3800DFEED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ConciergeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Concierge.app/Concierge";
+			};
+			name = Debug;
+		};
+		EBDDD4C31A199B3800DFEED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ConciergeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Concierge.app/Concierge";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EBDDD4971A199B3800DFEED9 /* Build configuration list for PBXProject "Concierge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBDDD4BC1A199B3800DFEED9 /* Debug */,
+				EBDDD4BD1A199B3800DFEED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBDDD4BE1A199B3800DFEED9 /* Build configuration list for PBXNativeTarget "Concierge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBDDD4BF1A199B3800DFEED9 /* Debug */,
+				EBDDD4C01A199B3800DFEED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EBDDD4C11A199B3800DFEED9 /* Build configuration list for PBXNativeTarget "ConciergeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBDDD4C21A199B3800DFEED9 /* Debug */,
+				EBDDD4C31A199B3800DFEED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EBDDD4A31A199B3800DFEED9 /* Concierge.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EBDDD4A41A199B3800DFEED9 /* Concierge.xcdatamodel */,
+			);
+			currentVersion = EBDDD4A41A199B3800DFEED9 /* Concierge.xcdatamodel */;
+			path = Concierge.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EBDDD4941A199B3800DFEED9 /* Project object */;
+}
