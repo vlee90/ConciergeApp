@@ -19,4 +19,6 @@ class User {
     var jwtToken: String?
     var timeZone: String?
     
+    var jobArray: Array<Job>?
+    
 }

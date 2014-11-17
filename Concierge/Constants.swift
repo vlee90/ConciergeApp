@@ -8,7 +8,9 @@
 
 enum ViewControllerIdenifiers: String {
     case ProfileVC = "PROFILE_VC"
-    case ConciergeVC = "CONCIERGE_VC"
+    case ConciergeNavCrtl = "CONCIERGE_NAV_C"
+    case ConciergeDetailVC = "CONCIERGE_DETAIL_VC"
     case SettingVC = "SETTING_VC"
     case JobNavCrtl = "JOB_NAV_C"
+    case JobDetailVC = "JOB_DETAIL_VC"
 }

@@ -9,10 +9,14 @@
 import UIKit
 
 class ConfirmationViewController: UIViewController {
-
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var confirmationTextField: UITextField!
+    var tabbarController = UITabBarController()
+    var viewControllerArray: Array<UIViewController>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.setViewControllersForTabBarController()
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,15 +24,23 @@ class ConfirmationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func confirmButtonPressed(sender: UIButton) {
+        self.presentViewController(self.tabbarController, animated: true, completion: nil)
     }
-    */
+    
+    func setViewControllersForTabBarController() {
+        let conciegreVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.ConciergeNavCrtl.rawValue) as UINavigationController
+        let profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
+        let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
+        let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
+        if true {
+            self.viewControllerArray = [conciegreVC, profileVC, jobNavC, settingVC]
+            self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
+        }
+        else {
+            self.viewControllerArray = [profileVC, jobNavC, settingVC]
+            self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
+        }
+    }
 
 }

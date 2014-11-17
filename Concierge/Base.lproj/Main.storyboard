@@ -188,7 +188,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SN2-sz-gtm">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SN2-sz-gtm">
                                 <rect key="frame" x="228" y="162" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -218,7 +218,41 @@
             </objects>
             <point key="canvasLocation" x="386" y="-207"/>
         </scene>
-        <!--Jobs-->
+        <!--Concierge-->
+        <scene sceneID="xgJ-7h-r0p">
+            <objects>
+                <navigationController storyboardIdentifier="CONCIERGE_NAV_C" title="Concierge" id="C4B-m3-85E" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bop-EV-Ij3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9Rc-2g-6Cv" kind="relationship" relationship="rootViewController" id="VVa-Rd-io2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="edw-aL-2Nj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1261" y="-936"/>
+        </scene>
+        <!--Create Job-->
+        <scene sceneID="T6l-bD-vCR">
+            <objects>
+                <viewController title="Create Job" id="MXw-DP-9dO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c2R-N3-W7H"/>
+                        <viewControllerLayoutGuide type="bottom" id="ywG-Gc-wEz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TyC-xp-wWx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.95158297479999998" blue="7.621079918e-05" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i4T-hH-81k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2756" y="1137"/>
+        </scene>
+        <!--Job Table View Controller-->
         <scene sceneID="1Dh-Zw-is3">
             <objects>
                 <viewController storyboardIdentifier="JOB_VC" id="BUA-ig-Ab0" customClass="JobTableViewController" customModule="Concierge" customModuleProvider="target" sceneMemberID="viewController">
@@ -240,26 +274,31 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="08l-zJ-kie" id="22m-uK-xiG">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="ssZ-iz-aKG" kind="showDetail" id="Gxb-a8-teX"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.22640607600000001" green="1" blue="0.15633545569999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Jobs" id="04v-RD-jMU"/>
-                    <navigationItem key="navigationItem" id="F1u-49-Crn"/>
+                    <navigationItem key="navigationItem" id="F1u-49-Crn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FOt-ET-Vxr">
+                            <connections>
+                                <segue destination="MXw-DP-9dO" kind="show" id="QfN-o8-Tn6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="oBZ-hE-6k8" id="M7e-Qh-ftd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCF-Pj-Ons" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2577" y="681"/>
+            <point key="canvasLocation" x="2013" y="1137"/>
         </scene>
         <!--Job Detail View Controller-->
         <scene sceneID="osr-hv-N0d">
             <objects>
-                <viewController id="ssZ-iz-aKG" customClass="JobDetailViewController" customModule="Concierge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JOB_DETAIL_VC" id="ssZ-iz-aKG" customClass="JobDetailViewController" customModule="Concierge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="utx-uD-RnM"/>
                         <viewControllerLayoutGuide type="bottom" id="smc-PH-Abq"/>
@@ -272,7 +311,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVN-xu-7zI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3283" y="681"/>
+            <point key="canvasLocation" x="2756" y="439"/>
         </scene>
         <!--Settings-->
         <scene sceneID="I4I-CA-v2i">
@@ -291,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWD-g6-WoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2577" y="-97"/>
+            <point key="canvasLocation" x="1261" y="439"/>
         </scene>
         <!--Concierge-->
         <scene sceneID="TDC-B8-PjL">
@@ -304,12 +343,56 @@
                     <view key="view" contentMode="scaleToFill" id="mSD-pk-HAR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Ls-kZ-z4K">
+                                <rect key="frame" x="16" y="211" width="397" height="363"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="CONCIERGE_CELL" selectionStyle="default" indentationWidth="10" id="eiJ-1j-sTh">
+                                        <rect key="frame" x="0.0" y="0.0" width="397" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eiJ-1j-sTh" id="fDF-Sc-1vD">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcK-9w-ekO">
+                                <rect key="frame" x="200" y="111" width="124" height="50"/>
+                                <color key="backgroundColor" red="0.22640607600000001" green="1" blue="0.15633545569999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Start Work">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.11837903819999999" green="0.44630382699999999" blue="0.47072285349999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="2J1-Xh-MGr"/>
+                    <connections>
+                        <outlet property="tableView" destination="2Ls-kZ-z4K" id="a5l-ju-OEy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RmN-yN-hzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1811" y="-934"/>
+            <point key="canvasLocation" x="1989" y="-936"/>
+        </scene>
+        <!--Concierge Detail-->
+        <scene sceneID="8Tv-e6-jOl">
+            <objects>
+                <viewController storyboardIdentifier="CONCIERGE_DETAIL_VC" title="Concierge Detail" id="dKh-sb-qcc" customClass="ConciergeJobDetailViewController" customModule="Concierge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xiw-7n-p4t"/>
+                        <viewControllerLayoutGuide type="bottom" id="fdg-4v-HlI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EsB-Dg-vCc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JKC-Is-ZNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2686" y="-936"/>
         </scene>
         <!--Profile-->
         <scene sceneID="qXM-NV-gPm">
@@ -337,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fev-vf-jxl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2577" y="-761"/>
+            <point key="canvasLocation" x="1261" y="-225"/>
         </scene>
         <!--Jobs-->
         <scene sceneID="URB-YW-Idm">
@@ -349,12 +432,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BUA-ig-Ab0" kind="relationship" relationship="rootViewController" id="fjg-Fe-4gt"/>
+                        <segue destination="BUA-ig-Ab0" kind="relationship" relationship="rootViewController" id="4AN-I0-Mh4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvu-3m-Gkx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1811" y="681"/>
+            <point key="canvasLocation" x="1261" y="1137"/>
         </scene>
         <!--Confirmation-->
         <scene sceneID="rU4-iT-JVg">
@@ -384,10 +467,17 @@
                                 <state key="normal" title="Confirm">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmButtonPressed:" destination="4f8-jY-p2Y" eventType="touchUpInside" id="TdE-CQ-W8S"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="cDa-cT-qTi" id="4On-9p-5mU"/>
+                        <outlet property="confirmationTextField" destination="UGy-XO-I9h" id="DmP-lw-bmV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0g-Ok-2xC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

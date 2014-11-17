@@ -28,6 +28,8 @@
 		EBDDD4EA1A1A8C2C00DFEED9 /* ConciergeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4E91A1A8C2C00DFEED9 /* ConciergeViewController.swift */; };
 		EBDDD4ED1A1A8DE600DFEED9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4EC1A1A8DE500DFEED9 /* SettingsViewController.swift */; };
 		EBDDD51F1A1AA04200DFEED9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD51E1A1AA04200DFEED9 /* Constants.swift */; };
+		EBDDD5211A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD5201A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift */; };
+		EBDDD5251A1AA98500DFEED9 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD5241A1AA98500DFEED9 /* Job.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		EBDDD4E91A1A8C2C00DFEED9 /* ConciergeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConciergeViewController.swift; sourceTree = "<group>"; };
 		EBDDD4EC1A1A8DE500DFEED9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EBDDD51E1A1AA04200DFEED9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EBDDD5201A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConciergeJobDetailViewController.swift; sourceTree = "<group>"; };
+		EBDDD5241A1AA98500DFEED9 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 		EBDDD4D21A19A38E00DFEED9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EBDDD5241A1AA98500DFEED9 /* Job.swift */,
 				EBDDD4E31A1A855900DFEED9 /* User.swift */,
 			);
 			name = Model;
@@ -198,12 +203,29 @@
 			isa = PBXGroup;
 			children = (
 				EBDDD4D61A19E1A300DFEED9 /* ProfileViewController.swift */,
-				EBDDD4E91A1A8C2C00DFEED9 /* ConciergeViewController.swift */,
-				EBDDD4DC1A1A81AD00DFEED9 /* JobTableViewController.swift */,
-				EBDDD4DE1A1A81BE00DFEED9 /* JobDetailViewController.swift */,
+				EBDDD5221A1AA7F800DFEED9 /* Concierge */,
+				EBDDD5231A1AA81200DFEED9 /* Jobs */,
 				EBDDD4EC1A1A8DE500DFEED9 /* SettingsViewController.swift */,
 			);
 			name = TabBarViews;
+			sourceTree = "<group>";
+		};
+		EBDDD5221A1AA7F800DFEED9 /* Concierge */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4E91A1A8C2C00DFEED9 /* ConciergeViewController.swift */,
+				EBDDD5201A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift */,
+			);
+			name = Concierge;
+			sourceTree = "<group>";
+		};
+		EBDDD5231A1AA81200DFEED9 /* Jobs */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4DC1A1A81AD00DFEED9 /* JobTableViewController.swift */,
+				EBDDD4DE1A1A81BE00DFEED9 /* JobDetailViewController.swift */,
+			);
+			name = Jobs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +335,7 @@
 				EBDDD4CB1A19A26A00DFEED9 /* SignUpViewController.swift in Sources */,
 				EBDDD4E61A1A8AB600DFEED9 /* ThemeController.swift in Sources */,
 				EBDDD4A21A199B3800DFEED9 /* AppDelegate.swift in Sources */,
+				EBDDD5211A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift in Sources */,
 				EBDDD4D71A19E1A300DFEED9 /* ProfileViewController.swift in Sources */,
 				EBDDD4D91A1A815E00DFEED9 /* LogInViewController.swift in Sources */,
 				EBDDD4DF1A1A81BE00DFEED9 /* JobDetailViewController.swift in Sources */,
@@ -323,6 +346,7 @@
 				EBDDD51F1A1AA04200DFEED9 /* Constants.swift in Sources */,
 				EBDDD4E41A1A855900DFEED9 /* User.swift in Sources */,
 				EBDDD4E11A1A83EE00DFEED9 /* NetworkController.swift in Sources */,
+				EBDDD5251A1AA98500DFEED9 /* Job.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

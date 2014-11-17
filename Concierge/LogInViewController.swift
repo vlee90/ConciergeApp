@@ -15,12 +15,24 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let conciegreVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.ConciergeVC.rawValue) as ConciergeViewController
+        self.setViewControllersForTabBarController()
+    }
+
+    @IBAction func loginButtonPressed(sender: UIButton) {
+        self.presentViewController(self.tabbarController, animated: true, completion: nil)
+        
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func setViewControllersForTabBarController() {
+        let conciegreVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.ConciergeNavCrtl.rawValue) as UINavigationController
         let profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
         let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
         let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
-        
-        if false {
+        if true {
             self.viewControllerArray = [conciegreVC, profileVC, jobNavC, settingVC]
             self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
         }
@@ -28,17 +40,5 @@ class LogInViewController: UIViewController {
             self.viewControllerArray = [profileVC, jobNavC, settingVC]
             self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
         }
-        
-        
-    }
-
-    @IBAction func loginButtonPressed(sender: UIButton) {
-        println("Login button pressed")
-        self.presentViewController(self.tabbarController, animated: true, completion: nil)
-        
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
