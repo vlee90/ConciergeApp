@@ -23,11 +23,10 @@ class ConfirmationViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func confirmButtonPressed(sender: UIButton) {
-//        networkController.GETrequest(<#endpoint: String#>, query: <#String?#>, completionFunction: <#(info: NSDictionary, error: NSError?) -> Void##(info: NSDictionary, error: NSError?) -> Void#>)
+        // POST Confirmation Check
         if false {
             self.presentViewController(self.tabbarController, animated: true, completion: nil)
         }

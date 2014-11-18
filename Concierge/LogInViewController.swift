@@ -27,7 +27,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginButtonPressed(sender: UIButton) {
         if self.checkForFilledOutFields() == true {
             if self.validateEmail(self.emailTextField.text) == true {
-                //        networkController.POSTrequest(<#endpoint: String#>, query: <#String#>, dictionary: <#NSDictionary#>, completionFunction: <#(postResponse: NSData, error: NSError?) -> Void##(postResponse: NSData, error: NSError?) -> Void#>)
+                // POST Login information
                 self.presentViewController(self.tabbarController, animated: true, completion: nil)
             }
             else {

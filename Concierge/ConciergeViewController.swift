@@ -10,11 +10,31 @@ import UIKit
 
 class ConciergeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var workButton: UIButton!
+    var workBool: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.workButton.setTitle("Work", forState: UIControlState.Normal)
+        
+    }
+    
+    @IBAction func workButtonPressed(sender: UIButton) {
+        //POST Work status
+        if self.workBool == false {
+            self.workButton.backgroundColor = UIColor.redColor()
+            self.workButton.setTitle("Stop", forState: UIControlState.Normal)
+            self.workButton.titleLabel?.backgroundColor = UIColor.redColor()
+            self.workBool = true
+        } else {
+            //POST Work status
+            self.workButton.backgroundColor = UIColor.greenColor()
+            self.workButton.setTitle("Work", forState: UIControlState.Normal)
+            self.workButton.titleLabel?.backgroundColor = UIColor.greenColor()
+            self.workBool = false
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -31,5 +51,4 @@ class ConciergeViewController: UIViewController, UITableViewDataSource, UITableV
         cell.backgroundColor = UIColor.redColor()
         return cell
     }
-    
 }

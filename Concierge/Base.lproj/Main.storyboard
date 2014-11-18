@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TqF-wz-nmO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nmX-HB-ql6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -302,7 +302,7 @@
         <!--Create Job-->
         <scene sceneID="T6l-bD-vCR">
             <objects>
-                <viewController title="Create Job" id="MXw-DP-9dO" sceneMemberID="viewController">
+                <viewController title="Create Job" id="MXw-DP-9dO" customClass="CreateJobViewController" customModule="Concierge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c2R-N3-W7H"/>
                         <viewControllerLayoutGuide type="bottom" id="ywG-Gc-wEz"/>
@@ -310,8 +310,45 @@
                     <view key="view" contentMode="scaleToFill" id="TyC-xp-wWx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="Y2i-Is-mop">
+                                <rect key="frame" x="-27" y="137" width="600" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="438034789.680408">
+                                    <!--2014-11-18 20:19:49 +0000-->
+                                </date>
+                            </datePicker>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WVE-Bx-IyA">
+                                <rect key="frame" x="270" y="373" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When do you want to be woken up?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hN-Vb-6Yf">
+                                <rect key="frame" x="135" y="101" width="277" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recurring?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wna-Uv-R2H">
+                                <rect key="frame" x="258" y="344" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjg-Oa-DNr">
+                                <rect key="frame" x="270" y="428" width="76" height="30"/>
+                                <state key="normal" title="Create Job">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createJobButtonPressed:" destination="MXw-DP-9dO" eventType="touchUpInside" id="pDh-09-zPl"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.95158297479999998" blue="7.621079918e-05" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="createJobButton" destination="yjg-Oa-DNr" id="Fcu-HF-hKN"/>
+                        <outlet property="datePicker" destination="Y2i-Is-mop" id="6Be-b0-OaG"/>
+                        <outlet property="recurringSwitch" destination="WVE-Bx-IyA" id="gKn-yl-4LK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4T-hH-81k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -425,9 +462,12 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcK-9w-ekO">
                                 <rect key="frame" x="200" y="111" width="124" height="50"/>
                                 <color key="backgroundColor" red="0.22640607600000001" green="1" blue="0.15633545569999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Start Work">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="workButtonPressed:" destination="9Rc-2g-6Cv" eventType="touchUpInside" id="erX-vw-fh5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.11837903819999999" green="0.44630382699999999" blue="0.47072285349999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -435,6 +475,7 @@
                     <navigationItem key="navigationItem" id="2J1-Xh-MGr"/>
                     <connections>
                         <outlet property="tableView" destination="2Ls-kZ-z4K" id="a5l-ju-OEy"/>
+                        <outlet property="workButton" destination="BcK-9w-ekO" id="A9b-6j-k9J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RmN-yN-hzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -471,8 +512,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sK5-og-TzJ">
+                                <rect key="frame" x="239" y="316" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wpz-IO-oKS">
+                                <rect key="frame" x="239" y="278" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j1r-bZ-h1C">
+                                <rect key="frame" x="239" y="389" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDZ-B8-ZSg">
+                                <rect key="frame" x="239" y="234" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4hv-3k-VRx">
+                                <rect key="frame" x="239" y="351" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BX9-OZ-GD2">
+                                <rect key="frame" x="226" y="196" width="148" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.95158297479999998" blue="7.621079918e-05" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Change Information">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeInformationButtonPressed:" destination="nmX-HB-ql6" eventType="touchUpInside" id="5Yo-kx-bAP"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1wb-H0-xg3">
-                                <rect key="frame" x="225" y="48" width="150" height="150"/>
+                                <rect key="frame" x="197" y="38" width="180" height="150"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
@@ -480,12 +556,18 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="Pkp-xn-NGH"/>
                     <connections>
+                        <outlet property="changeInformationButton" destination="BX9-OZ-GD2" id="mLa-HI-nsb"/>
+                        <outlet property="emailTextField" destination="4hv-3k-VRx" id="gi5-bw-v3M"/>
+                        <outlet property="firstNameTextField" destination="XDZ-B8-ZSg" id="GI1-sB-aQH"/>
+                        <outlet property="lastNameTextField" destination="wpz-IO-oKS" id="t0f-cb-03D"/>
+                        <outlet property="passwordTextField" destination="j1r-bZ-h1C" id="B3M-JQ-SMW"/>
+                        <outlet property="phoneNumberTextField" destination="sK5-og-TzJ" id="QYo-Ha-bV6"/>
                         <outlet property="profileImageView" destination="1wb-H0-xg3" id="GZ9-Eb-ctj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fev-vf-jxl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1261" y="-225"/>
+            <point key="canvasLocation" x="1261" y="-75"/>
         </scene>
         <!--Jobs-->
         <scene sceneID="URB-YW-Idm">

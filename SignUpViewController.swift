@@ -58,7 +58,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                     ]
                 ]
                 println(loginDictionary)
-                //        self.networkController.POSTrequest(<#endpoint: String#>, query: <#String#>, dictionary: <#NSDictionary#>, completionFunction: <#(postResponse: NSData, error: NSError?) -> Void##(postResponse: NSData, error: NSError?) -> Void#>)
+                // POST User SignUp Info
                 let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.ConfirmationVC.rawValue) as ConfirmationViewController
                 self.presentViewController(toVC, animated: true, completion: nil)
             }
