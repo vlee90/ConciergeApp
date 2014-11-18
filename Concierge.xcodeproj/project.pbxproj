@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB2209CE1A1BCA5E0085D372 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2209CD1A1BCA5E0085D372 /* AlertController.swift */; };
 		EBDDD4A21A199B3800DFEED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */; };
 		EBDDD4A51A199B3800DFEED9 /* Concierge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A31A199B3800DFEED9 /* Concierge.xcdatamodeld */; };
 		EBDDD4AA1A199B3800DFEED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4A81A199B3800DFEED9 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB2209CD1A1BCA5E0085D372 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		EBDDD49C1A199B3800DFEED9 /* Concierge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concierge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBDDD4A01A199B3800DFEED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				EBDDD4E51A1A8AB600DFEED9 /* ThemeController.swift */,
 				EBDDD4E01A1A83EE00DFEED9 /* NetworkController.swift */,
+				EB2209CD1A1BCA5E0085D372 /* AlertController.swift */,
 				EBDDD51E1A1AA04200DFEED9 /* Constants.swift */,
 				EBDDD4E21A1A850D00DFEED9 /* StartUp */,
 				EBDDD4EB1A1A8C3A00DFEED9 /* TabBarViews */,
@@ -339,6 +342,7 @@
 				EBDDD4D71A19E1A300DFEED9 /* ProfileViewController.swift in Sources */,
 				EBDDD4D91A1A815E00DFEED9 /* LogInViewController.swift in Sources */,
 				EBDDD4DF1A1A81BE00DFEED9 /* JobDetailViewController.swift in Sources */,
+				EB2209CE1A1BCA5E0085D372 /* AlertController.swift in Sources */,
 				EBDDD4DD1A1A81AD00DFEED9 /* JobTableViewController.swift in Sources */,
 				EBDDD4A51A199B3800DFEED9 /* Concierge.xcdatamodeld in Sources */,
 				EBDDD4ED1A1A8DE600DFEED9 /* SettingsViewController.swift in Sources */,

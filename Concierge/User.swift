@@ -17,7 +17,7 @@ class User {
     var concierge: Bool = false
     var confirmed: Bool = false
     var jwtToken: String?
-    var timeZone: String?
+//    var timeZone: String?
     
     var jobArray: Array<Job>?
     

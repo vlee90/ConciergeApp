@@ -64,12 +64,12 @@ class NetworkController {
         request.setValue("\(length)", forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData
-        let dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (data, httpResponse, error) -> Void in
-            println(data)
+        let dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (responseData, httpResponse, error) -> Void in
+            println(responseData)
             println(httpResponse)
             println(error)
             self.queue.addOperationWithBlock({ () -> Void in
-                completionFunction(postResponse: data, error: error)
+                completionFunction(postResponse: responseData, error: error)
             })
         })
         dataTask.resume()

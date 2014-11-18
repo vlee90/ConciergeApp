@@ -13,4 +13,15 @@ enum ViewControllerIdenifiers: String {
     case SettingVC = "SETTING_VC"
     case JobNavCrtl = "JOB_NAV_C"
     case JobDetailVC = "JOB_DETAIL_VC"
+    case ConfirmationVC = "CONFIRMATION_VC"
+    case SignUpVC = "SIGN_UP_VC"
+}
+
+enum POSTRoutes: String {
+    case User = "/users"
+    case Confirm = "/confirm"
+    case Concierge = "/concierge"
+    case ConciergeAvailable = "/conciergeAvailable"
+    case ConciergeUnavailable = "/conciergeUnavailable"
+    case Jobs = "/jobs"
 }

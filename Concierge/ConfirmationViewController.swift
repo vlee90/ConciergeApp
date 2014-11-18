@@ -13,6 +13,8 @@ class ConfirmationViewController: UIViewController {
     @IBOutlet weak var confirmationTextField: UITextField!
     var tabbarController = UITabBarController()
     var viewControllerArray: Array<UIViewController>!
+    var networkController = NetworkController()
+    var alertController = AlertController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,14 @@ class ConfirmationViewController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(sender: UIButton) {
-        self.presentViewController(self.tabbarController, animated: true, completion: nil)
+//        networkController.GETrequest(<#endpoint: String#>, query: <#String?#>, completionFunction: <#(info: NSDictionary, error: NSError?) -> Void##(info: NSDictionary, error: NSError?) -> Void#>)
+        if false {
+            self.presentViewController(self.tabbarController, animated: true, completion: nil)
+        }
+        else {
+            let confirmationNotValidAlert = self.alertController.confirmationNotValid()
+            self.presentViewController(confirmationNotValidAlert, animated: true, completion: nil)
+        }
     }
     
     func setViewControllersForTabBarController() {
