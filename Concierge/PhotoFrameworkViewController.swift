@@ -22,7 +22,7 @@ class PhotoFrameworkViewController: UIViewController, UICollectionViewDataSource
         super.viewDidLoad()
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        self.collectionView.registerNib(UINib(nibName: nibNames.GalleryCell.rawValue, bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: cellIdentifers.Gallery.rawValue)
+        self.collectionView.registerNib(UINib(nibName: knibNames.GalleryCell.rawValue, bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: kCellIdentifers.Gallery.rawValue)
         self.assetFetchResult = PHAsset.fetchAssetsWithOptions(nil)
         self.flowLayout = self.collectionView.collectionViewLayout as UICollectionViewFlowLayout
         self.cellSize = self.flowLayout.itemSize
@@ -34,7 +34,7 @@ class PhotoFrameworkViewController: UIViewController, UICollectionViewDataSource
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifers.Gallery.rawValue, forIndexPath: indexPath) as GalleryCollectionViewCell
+        let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifers.Gallery.rawValue, forIndexPath: indexPath) as GalleryCollectionViewCell
         var asset = self.assetFetchResult[indexPath.row] as PHAsset
         self.imageManager.requestImageForAsset(asset, targetSize: self.cellSize, contentMode: PHImageContentMode.AspectFit, options: nil) { (image, infoDict) -> Void in
             cell.imageView.image = image

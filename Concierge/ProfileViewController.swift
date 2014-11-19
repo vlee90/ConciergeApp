@@ -20,7 +20,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     
     var validationController = ValidationController.sharedInstance
     var alertController = AlertController.sharedInstance
-    var imageDelegate: ImageDelegate?
     
     var changeMode: Bool = false
     var textFieldArray: [UITextField]!
@@ -28,7 +27,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.imageDelegate = self
         self.setTextFieldsEnabled(false)
         self.passwordTextField.secureTextEntry = true
         self.textFieldArray = [self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.phoneNumberTextField, self.passwordTextField]
@@ -50,6 +48,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
             self.changeInformationButton.setTitle("Save", forState: UIControlState.Normal)
             self.changeInformationButton.titleLabel?.backgroundColor = UIColor.redColor()
             self.setTextFieldsEnabled(true)
+            self.profileImageView.highlighted = true
             self.changeMode = true
         } else {
             //POST Save
@@ -59,6 +58,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
                     self.changeInformationButton.setTitle("Change Information", forState: UIControlState.Normal)
                     self.changeInformationButton.titleLabel?.backgroundColor = UIColor.greenColor()
                     self.setTextFieldsEnabled(false)
+                    self.profileImageView.highlighted = false
                     self.changeMode = false
                 }
                 else {
@@ -74,8 +74,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     }
     
     func profileImagePressed(gesture: UIGestureRecognizer) {
-        let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.GalleryVC.rawValue) as PhotoFrameworkViewController
-        self.presentViewController(toVC, animated: true, completion: nil)
+        if self.changeMode == true {
+            let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.GalleryVC.rawValue) as PhotoFrameworkViewController
+            toVC.imageDelegate = self
+            self.presentViewController(toVC, animated: true, completion: nil)
+        }
     }
     
     func transferImage(image: UIImage) {

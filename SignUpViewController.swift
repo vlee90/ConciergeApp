@@ -35,6 +35,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         self.setUpKeyboard()
         self.textFieldArray = [self.phoneNumberTextField, self.emailTextField, self.passwordTextField, self.firstNameTextField, self.lastNameTextField]
+        
+//        self.networkController.GETrequest(<#endpoint: String#>, query: <#String?#>) { (info, error) -> Void in
+//            <#code#>
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,7 +66,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                 ]
                 println(loginDictionary)
                 // POST User SignUp Info
-                let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.ConfirmationVC.rawValue) as ConfirmationViewController
+                let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConfirmationVC.rawValue) as ConfirmationViewController
                 self.presentViewController(toVC, animated: true, completion: nil)
             }
             else {
@@ -104,5 +108,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         self.emailTextField.autocorrectionType = UITextAutocorrectionType.No
         self.phoneNumberTextField.autocorrectionType = UITextAutocorrectionType.No
         self.passwordTextField.autocorrectionType = UITextAutocorrectionType.No
+    }
+    
+    func checkForJWT() {
+        //  Checks if token is saved in user default
+        if let tokenKey = NSUserDefaults.standardUserDefaults().valueForKey(kTokenKey) as? String {
+            //  TRUE: Check if token matches token in database.
+                //  TRUE: Present ProfileVC
+            
+                //  FALSE: Present LoginVC
+        }
+            //  FALSE: Present SignUpVC
     }
 }

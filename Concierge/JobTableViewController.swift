@@ -28,7 +28,7 @@ class JobTableViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.JobDetailVC.rawValue) as JobDetailViewController
+        let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobDetailVC.rawValue) as JobDetailViewController
         self.navigationController?.pushViewController(toVC, animated: true)
     }
     

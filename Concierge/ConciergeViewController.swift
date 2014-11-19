@@ -38,7 +38,7 @@ class ConciergeViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.ConciergeDetailVC.rawValue) as ConciergeJobDetailViewController
+        let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConciergeDetailVC.rawValue) as ConciergeJobDetailViewController
         self.navigationController?.pushViewController(toVC, animated: true)
     }
     

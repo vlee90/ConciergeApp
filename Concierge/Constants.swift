@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 VincentLee. All rights reserved.
 //
 
-enum ViewControllerIdenifiers: String {
+enum kViewControllerIdenifiers: String {
     case ProfileVC = "PROFILE_VC"
     case ConciergeNavCrtl = "CONCIERGE_NAV_C"
     case ConciergeDetailVC = "CONCIERGE_DETAIL_VC"
@@ -18,7 +18,7 @@ enum ViewControllerIdenifiers: String {
     case GalleryVC = "PHOTO_GALLERY_VC"
 }
 
-enum POSTRoutes: String {
+enum kPOSTRoutes: String {
     case User = "/users"
     case Confirm = "/confirm"
     case Concierge = "/concierge"
@@ -27,10 +27,12 @@ enum POSTRoutes: String {
     case Jobs = "/jobs"
 }
 
-enum cellIdentifers: String {
+enum kCellIdentifers: String {
     case Gallery = "GALLERY_CELL"
 }
 
-enum nibNames: String {
+enum knibNames: String {
     case GalleryCell = "GalleryCollectionViewCell"
 }
+
+let kTokenKey = "tokenKey"

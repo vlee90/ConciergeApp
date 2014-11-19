@@ -37,10 +37,10 @@ class ConfirmationViewController: UIViewController {
     }
     
     func setViewControllersForTabBarController() {
-        let conciegreVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.ConciergeNavCrtl.rawValue) as UINavigationController
-        let profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
-        let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
-        let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
+        let conciegreVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConciergeNavCrtl.rawValue) as UINavigationController
+        let profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
+        let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
+        let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
         if true {
             self.viewControllerArray = [conciegreVC, profileVC, jobNavC, settingVC]
             self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
