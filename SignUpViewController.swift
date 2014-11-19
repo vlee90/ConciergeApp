@@ -9,11 +9,13 @@
 import UIKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate{
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var directionLabel: UILabel!
     
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    
+
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -39,6 +41,25 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
 //        self.networkController.GETrequest(<#endpoint: String#>, query: <#String?#>) { (info, error) -> Void in
 //            <#code#>
 //        }
+        self.view.backgroundColor = tColor1
+        self.containerView.backgroundColor = tColor2
+        for textfield in textFieldArray {
+            textfield.backgroundColor = tColor4
+        }
+        self.titleLabel.textColor = tColor5
+        self.directionLabel.textColor = tColor5
+        self.signUpButton.backgroundColor = tColor3
+        self.loginButton.backgroundColor = tColor3
+        self.signUpButton.setTitleColor(tColor5, forState: UIControlState.Normal)
+        self.loginButton.setTitleColor(tColor5, forState: UIControlState.Normal)
+        self.containerView.layer.cornerRadius = 10
+        self.loginButton.layer.cornerRadius = 10
+        self.signUpButton.layer.cornerRadius = 10
+//        self.directionLabel.sizeToFit()
+        self.titleLabel.adjustsFontSizeToFitWidth = true
+        self.directionLabel.adjustsFontSizeToFitWidth = true
+
+
     }
     
     override func didReceiveMemoryWarning() {

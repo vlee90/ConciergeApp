@@ -40,18 +40,28 @@ class NetworkController {
         var request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "GET"
         var dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (data, httpResponse, error) -> Void in
-            println(data)
-            println(httpResponse)
-            println(error)
-            var err: NSError?
-            if let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &err) as? NSDictionary {
-                self.queue.addOperationWithBlock({ () -> Void in
-                    completionFunction(info: dictionary, error: error)
-                })
+            if error != nil {
+                println(error.description)
+            }
+            else {
+                if let response = httpResponse as? NSHTTPURLResponse {
+                    switch response.statusCode {
+                    case 200...299:
+                        var err: NSError?
+                        if let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &err) as? NSDictionary {
+                            self.queue.addOperationWithBlock({ () -> Void in
+                                completionFunction(info: dictionary, error: error)
+                            })
+                        }
+                    default:
+                        println(response.statusCode)
+                    }
+                }
             }
         })
         dataTask.resume()
     }
+    
     
     func POSTrequest(endpoint: String, query: String, dictionary: NSDictionary, completionFunction: (postResponse: NSData, error: NSError?) -> Void) -> Void {
         var urlString = "\(self.protcol)" + "\(self.domain)" + "\(endpoint)"
@@ -65,12 +75,21 @@ class NetworkController {
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData
         let dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (responseData, httpResponse, error) -> Void in
-            println(responseData)
-            println(httpResponse)
-            println(error)
-            self.queue.addOperationWithBlock({ () -> Void in
-                completionFunction(postResponse: responseData, error: error)
-            })
+            if error != nil {
+                println(error.description)
+            }
+            else {
+                if let response = httpResponse as? NSHTTPURLResponse {
+                    switch response.statusCode {
+                    case 200...299:
+                        self.queue.addOperationWithBlock({ () -> Void in
+                            completionFunction(postResponse: responseData, error: error)
+                        })
+                    default:
+                        println(response.statusCode)
+                    }
+                }
+            }
         })
         dataTask.resume()
     }

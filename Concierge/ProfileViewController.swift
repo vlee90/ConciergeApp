@@ -17,12 +17,16 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var changeInformationButton: UIButton!
+    @IBOutlet weak var switchConciergeStatusButton: UIButton!
     
     var validationController = ValidationController.sharedInstance
     var alertController = AlertController.sharedInstance
     
     var changeMode: Bool = false
+    var userConciergeMode: Bool = true
     var textFieldArray: [UITextField]!
+    var viewControllerArray: [UIViewController]!
+    var tabBarControllerInstance: UITabBarController!
     
     
     override func viewDidLoad() {
@@ -34,7 +38,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
         self.profileImageView.userInteractionEnabled = true
         let profileImagePress = UITapGestureRecognizer(target: self, action: "profileImagePressed:")
         self.profileImageView.addGestureRecognizer(profileImagePress)
-        
+        self.switchConciergeStatusButton.enabled = false
 
     }
     override func didReceiveMemoryWarning() {
@@ -48,7 +52,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
             self.changeInformationButton.setTitle("Save", forState: UIControlState.Normal)
             self.changeInformationButton.titleLabel?.backgroundColor = UIColor.redColor()
             self.setTextFieldsEnabled(true)
-            self.profileImageView.highlighted = true
+            self.switchConciergeStatusButton.enabled = true
             self.changeMode = true
         } else {
             //POST Save
@@ -58,7 +62,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
                     self.changeInformationButton.setTitle("Change Information", forState: UIControlState.Normal)
                     self.changeInformationButton.titleLabel?.backgroundColor = UIColor.greenColor()
                     self.setTextFieldsEnabled(false)
-                    self.profileImageView.highlighted = false
+                    self.switchConciergeStatusButton.enabled = false
+                    self.setViewControllersForTabBarController()
+                    if userConciergeMode == true {
+                        self.tabBarControllerInstance.selectedIndex = 1
+                    }
+                    else {
+                        self.tabBarControllerInstance.selectedIndex = 0
+                    }
+                    println(self.tabBarControllerInstance.viewControllers)
                     self.changeMode = false
                 }
                 else {
@@ -69,6 +81,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
             else {
                 let unfilledFieldsAlert = self.alertController.fieldsLeftUnFilled()
                 self.presentViewController(unfilledFieldsAlert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @IBAction func switchConciergeStatusButtonPressed (sender: UIButton) {
+        if self.changeMode == true {
+            self.switchConciergeStatusButton.enabled = true
+            if self.userConciergeMode == true {
+                self.switchConciergeStatusButton.setTitle("Client", forState: UIControlState.Normal)
+                self.userConciergeMode = false
+            }
+            else {
+                self.switchConciergeStatusButton.setTitle("Concierge", forState: UIControlState.Normal)
+                self.userConciergeMode = true
             }
         }
     }
@@ -92,5 +118,21 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
         self.phoneNumberTextField.enabled = enabled
         self.emailTextField.enabled = enabled
         self.passwordTextField.enabled = enabled
+    }
+    
+    
+    func setViewControllersForTabBarController() {
+        let conciegreVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConciergeNavCrtl.rawValue) as UINavigationController
+        let profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
+        let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
+        let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
+        if self.userConciergeMode == true {
+            self.viewControllerArray = [conciegreVC, profileVC, jobNavC, settingVC]
+            self.tabBarControllerInstance.setViewControllers(self.viewControllerArray, animated: true)
+        }
+        else {
+            self.viewControllerArray = [profileVC, jobNavC, settingVC]
+            self.tabBarControllerInstance.setViewControllers(self.viewControllerArray, animated: true)
+        }
     }
 }
