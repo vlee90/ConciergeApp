@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB00C63C1A1C14D900F02C6E /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00C63B1A1C14D900F02C6E /* GalleryCollectionViewCell.swift */; };
+		EB00C63E1A1C150500F02C6E /* GalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB00C63D1A1C150500F02C6E /* GalleryCollectionViewCell.xib */; };
+		EB00C6401A1C255100F02C6E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00C63F1A1C255100F02C6E /* Protocols.swift */; };
 		EB2209CE1A1BCA5E0085D372 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2209CD1A1BCA5E0085D372 /* AlertController.swift */; };
 		EB2209D01A1BE1110085D372 /* CreateJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2209CF1A1BE1110085D372 /* CreateJobViewController.swift */; };
+		EBAB58101A1BFF550066E898 /* ValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAB580F1A1BFF550066E898 /* ValidationController.swift */; };
+		EBAB58121A1C12650066E898 /* PhotoFrameworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAB58111A1C12650066E898 /* PhotoFrameworkViewController.swift */; };
 		EBDDD4A21A199B3800DFEED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */; };
 		EBDDD4A51A199B3800DFEED9 /* Concierge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A31A199B3800DFEED9 /* Concierge.xcdatamodeld */; };
 		EBDDD4AA1A199B3800DFEED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4A81A199B3800DFEED9 /* Main.storyboard */; };
@@ -45,8 +50,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB00C63B1A1C14D900F02C6E /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
+		EB00C63D1A1C150500F02C6E /* GalleryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryCollectionViewCell.xib; sourceTree = "<group>"; };
+		EB00C63F1A1C255100F02C6E /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		EB2209CD1A1BCA5E0085D372 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		EB2209CF1A1BE1110085D372 /* CreateJobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateJobViewController.swift; sourceTree = "<group>"; };
+		EBAB580F1A1BFF550066E898 /* ValidationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationController.swift; sourceTree = "<group>"; };
+		EBAB58111A1C12650066E898 /* PhotoFrameworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFrameworkViewController.swift; sourceTree = "<group>"; };
 		EBDDD49C1A199B3800DFEED9 /* Concierge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concierge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBDDD4A01A199B3800DFEED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,9 +110,29 @@
 				EBDDD4E51A1A8AB600DFEED9 /* ThemeController.swift */,
 				EBDDD4E01A1A83EE00DFEED9 /* NetworkController.swift */,
 				EB2209CD1A1BCA5E0085D372 /* AlertController.swift */,
+				EBAB580F1A1BFF550066E898 /* ValidationController.swift */,
 				EBDDD51E1A1AA04200DFEED9 /* Constants.swift */,
+				EB00C63F1A1C255100F02C6E /* Protocols.swift */,
 			);
 			name = Accessory;
+			sourceTree = "<group>";
+		};
+		EBAB58131A1C12780066E898 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4EC1A1A8DE500DFEED9 /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		EBAB58141A1C128D0066E898 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4D61A19E1A300DFEED9 /* ProfileViewController.swift */,
+				EBAB58111A1C12650066E898 /* PhotoFrameworkViewController.swift */,
+				EB00C63B1A1C14D900F02C6E /* GalleryCollectionViewCell.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		EBDDD4931A199B3800DFEED9 = {
@@ -175,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				EBDDD4A81A199B3800DFEED9 /* Main.storyboard */,
+				EB00C63D1A1C150500F02C6E /* GalleryCollectionViewCell.xib */,
 				EBDDD4AD1A199B3800DFEED9 /* LaunchScreen.xib */,
 			);
 			name = View;
@@ -215,10 +246,10 @@
 		EBDDD4EB1A1A8C3A00DFEED9 /* TabBarViews */ = {
 			isa = PBXGroup;
 			children = (
-				EBDDD4D61A19E1A300DFEED9 /* ProfileViewController.swift */,
+				EBAB58141A1C128D0066E898 /* Profile */,
 				EBDDD5221A1AA7F800DFEED9 /* Concierge */,
 				EBDDD5231A1AA81200DFEED9 /* Jobs */,
-				EBDDD4EC1A1A8DE500DFEED9 /* SettingsViewController.swift */,
+				EBAB58131A1C12780066E898 /* Settings */,
 			);
 			name = TabBarViews;
 			sourceTree = "<group>";
@@ -327,6 +358,7 @@
 				EBDDD4AF1A199B3800DFEED9 /* LaunchScreen.xib in Resources */,
 				EBDDD4D01A19A37D00DFEED9 /* User.png in Resources */,
 				EBDDD4CF1A19A37D00DFEED9 /* Password.png in Resources */,
+				EB00C63E1A1C150500F02C6E /* GalleryCollectionViewCell.xib in Resources */,
 				EBDDD4AC1A199B3800DFEED9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,7 +380,9 @@
 				EBDDD4DB1A1A817800DFEED9 /* ConfirmationViewController.swift in Sources */,
 				EBDDD4CB1A19A26A00DFEED9 /* SignUpViewController.swift in Sources */,
 				EBDDD4E61A1A8AB600DFEED9 /* ThemeController.swift in Sources */,
+				EB00C6401A1C255100F02C6E /* Protocols.swift in Sources */,
 				EBDDD4A21A199B3800DFEED9 /* AppDelegate.swift in Sources */,
+				EBAB58121A1C12650066E898 /* PhotoFrameworkViewController.swift in Sources */,
 				EBDDD5211A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift in Sources */,
 				EBDDD4D71A19E1A300DFEED9 /* ProfileViewController.swift in Sources */,
 				EBDDD4D91A1A815E00DFEED9 /* LogInViewController.swift in Sources */,
@@ -363,6 +397,8 @@
 				EBDDD4E41A1A855900DFEED9 /* User.swift in Sources */,
 				EBDDD4E11A1A83EE00DFEED9 /* NetworkController.swift in Sources */,
 				EBDDD5251A1AA98500DFEED9 /* Job.swift in Sources */,
+				EB00C63C1A1C14D900F02C6E /* GalleryCollectionViewCell.swift in Sources */,
+				EBAB58101A1BFF550066E898 /* ValidationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

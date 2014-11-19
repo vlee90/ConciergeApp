@@ -15,6 +15,7 @@ enum ViewControllerIdenifiers: String {
     case JobDetailVC = "JOB_DETAIL_VC"
     case ConfirmationVC = "CONFIRMATION_VC"
     case SignUpVC = "SIGN_UP_VC"
+    case GalleryVC = "PHOTO_GALLERY_VC"
 }
 
 enum POSTRoutes: String {
@@ -24,4 +25,12 @@ enum POSTRoutes: String {
     case ConciergeAvailable = "/conciergeAvailable"
     case ConciergeUnavailable = "/conciergeUnavailable"
     case Jobs = "/jobs"
+}
+
+enum cellIdentifers: String {
+    case Gallery = "GALLERY_CELL"
+}
+
+enum nibNames: String {
+    case GalleryCell = "GalleryCollectionViewCell"
 }

@@ -25,13 +25,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var emailImageView: UIImageView!
     @IBOutlet weak var passwordImageView: UIImageView!
     
-    var networkController = NetworkController()
-    var alertController = AlertController()
-
+    var networkController = NetworkController.sharedInstance
+    var alertController = AlertController.sharedInstance
+    var validationController = ValidationController.sharedInstance
+    
+    var textFieldArray: [UITextField]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpKeyboard()
-        
+        self.textFieldArray = [self.phoneNumberTextField, self.emailTextField, self.passwordTextField, self.firstNameTextField, self.lastNameTextField]
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,13 +44,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func signUpButtonPressed(sender: UIButton) {
         // Tier 1: Checks if all fields are filled out.
-        if self.checkForCompletelyFilledOutTextFields() == false {
+        if self.validationController.checkForCompletelyFilledOutTextFields(self.textFieldArray) == false {
             let fieldsNotFilledAlert = self.alertController.fieldsLeftUnFilled()
             self.presentViewController(fieldsNotFilledAlert, animated: true, completion: nil)
         }
         else {
             // Tier 2: Checks if email and phone number are valid
-            if self.validateEmail(self.emailTextField.text) == true && self.validatePhoneNumber(self.phoneNumberTextField.text) == true{
+            if self.validationController.validateEmail(self.emailTextField.text) == true && self.validationController.validatePhoneNumber(self.phoneNumberTextField.text) == true{
                 var loginDictionary: NSMutableDictionary = [
                     "username" : self.emailTextField.text,
                     "password" : self.passwordTextField.text,
@@ -63,7 +66,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                 self.presentViewController(toVC, animated: true, completion: nil)
             }
             else {
-                let notValidAlert = self.alertController.signUpNotValidAlert()
+                let notValidAlert = self.alertController.phoneAndEmailNotValid()
                 self.presentViewController(notValidAlert, animated: true, completion: nil)
             }
         }
@@ -101,32 +104,5 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         self.emailTextField.autocorrectionType = UITextAutocorrectionType.No
         self.phoneNumberTextField.autocorrectionType = UITextAutocorrectionType.No
         self.passwordTextField.autocorrectionType = UITextAutocorrectionType.No
-    }
-    
-    func validateEmail(email: String) -> Bool{
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
-        var emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        let result = emailTest!.evaluateWithObject(email)
-        return result
-    }
-    
-    func validatePhoneNumber(number: String) -> Bool {
-        let phoneNumberRegex = "\\d{10}"
-        var phoneNumberTest = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
-        let result = phoneNumberTest!.evaluateWithObject(number)
-        return result
-    }
-    
-    func checkForCompletelyFilledOutTextFields() -> Bool{
-        if self.phoneNumberTextField.text != "" &&
-        self.emailTextField.text != "" &&
-        self.firstNameTextField.text != "" &&
-        self.lastNameTextField.text != "" &&
-        self.passwordTextField.text != "" {
-            return true
-        }
-        else {
-            return false
-        }
     }
 }

@@ -24,7 +24,7 @@ class AlertController: UIViewController {
         return Static.instance!
     }
     
-    func signUpNotValidAlert() -> UIAlertController {
+    func phoneAndEmailNotValid() -> UIAlertController {
         let alertController = UIAlertController(title: "Attention", message: "Your phone number and/or email is not valid. Please type in valid information.", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(self.cancelAction)
         return alertController

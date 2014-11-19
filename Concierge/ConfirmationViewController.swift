@@ -13,8 +13,8 @@ class ConfirmationViewController: UIViewController {
     @IBOutlet weak var confirmationTextField: UITextField!
     var tabbarController = UITabBarController()
     var viewControllerArray: Array<UIViewController>!
-    var networkController = NetworkController()
-    var alertController = AlertController()
+    var networkController = NetworkController.sharedInstance
+    var alertController = AlertController.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()

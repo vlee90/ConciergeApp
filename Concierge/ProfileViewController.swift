@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITextFieldDelegate {
+class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -17,8 +17,32 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var changeInformationButton: UIButton!
-    var changeMode: Bool = false
     
+    var validationController = ValidationController.sharedInstance
+    var alertController = AlertController.sharedInstance
+    var imageDelegate: ImageDelegate?
+    
+    var changeMode: Bool = false
+    var textFieldArray: [UITextField]!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.imageDelegate = self
+        self.setTextFieldsEnabled(false)
+        self.passwordTextField.secureTextEntry = true
+        self.textFieldArray = [self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.phoneNumberTextField, self.passwordTextField]
+        
+        self.profileImageView.userInteractionEnabled = true
+        let profileImagePress = UITapGestureRecognizer(target: self, action: "profileImagePressed:")
+        self.profileImageView.addGestureRecognizer(profileImagePress)
+        
+
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     @IBAction func changeInformationButtonPressed(sender: UIButton) {
         if self.changeMode == false {
@@ -28,24 +52,35 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
             self.setTextFieldsEnabled(true)
             self.changeMode = true
         } else {
-            self.changeInformationButton.backgroundColor = UIColor.greenColor()
-            self.changeInformationButton.setTitle("Change Information", forState: UIControlState.Normal)
-            self.changeInformationButton.titleLabel?.backgroundColor = UIColor.greenColor()
-            self.setTextFieldsEnabled(false)
-            self.changeMode = false
+            //POST Save
+            if self.validationController.checkForCompletelyFilledOutTextFields(self.textFieldArray) == true {
+                if self.validationController.validateEmail(self.emailTextField.text) == true && self.validationController.validatePhoneNumber(self.phoneNumberTextField.text) == true {
+                    self.changeInformationButton.backgroundColor = UIColor.greenColor()
+                    self.changeInformationButton.setTitle("Change Information", forState: UIControlState.Normal)
+                    self.changeInformationButton.titleLabel?.backgroundColor = UIColor.greenColor()
+                    self.setTextFieldsEnabled(false)
+                    self.changeMode = false
+                }
+                else {
+                    let invalidEmailAlert = self.alertController.phoneAndEmailNotValid()
+                    self.presentViewController(invalidEmailAlert, animated: true, completion: nil)
+                }
+            }
+            else {
+                let unfilledFieldsAlert = self.alertController.fieldsLeftUnFilled()
+                self.presentViewController(unfilledFieldsAlert, animated: true, completion: nil)
+            }
         }
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setTextFieldsEnabled(false)
-        self.passwordTextField.secureTextEntry = true
-
+    
+    func profileImagePressed(gesture: UIGestureRecognizer) {
+        let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(ViewControllerIdenifiers.GalleryVC.rawValue) as PhotoFrameworkViewController
+        self.presentViewController(toVC, animated: true, completion: nil)
     }
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func transferImage(image: UIImage) {
+        self.profileImageView.image = image
+        //POST IMAGE
     }
     
     func setTextFieldsEnabled(enabled: Bool) {

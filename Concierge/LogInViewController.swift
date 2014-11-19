@@ -15,18 +15,22 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     var tabbarController = UITabBarController()
     var viewControllerArray: Array<UIViewController>!
     
-    var networkController = NetworkController()
-    var alertController = AlertController()
+    var networkController = NetworkController.sharedInstance
+    var alertController = AlertController.sharedInstance
+    var validationController = ValidationController.sharedInstance
+    
+    var textFieldArray: [UITextField]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewControllersForTabBarController()
         self.setUpKeyboard()
+        self.textFieldArray = [self.emailTextField, self.passwordTextField]
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
-        if self.checkForFilledOutFields() == true {
-            if self.validateEmail(self.emailTextField.text) == true {
+        if self.validationController.checkForCompletelyFilledOutTextFields(self.textFieldArray!) == true {
+            if self.validationController.validateEmail(self.emailTextField.text) == true {
                 // POST Login information
                 self.presentViewController(self.tabbarController, animated: true, completion: nil)
             }
@@ -39,8 +43,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             let unfilledFieldsAlert = self.alertController.fieldsLeftUnFilled()
             self.presentViewController(unfilledFieldsAlert, animated: true, completion: nil)
         }
-
-        
     }
 
     
@@ -56,15 +58,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         else {
             self.viewControllerArray = [profileVC, jobNavC, settingVC]
             self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
-        }
-    }
-    
-    func checkForFilledOutFields() -> Bool{
-        if self.emailTextField.text != "" && self.passwordTextField.text != "" {
-            return true
-        }
-        else {
-            return false
         }
     }
     
@@ -95,13 +88,4 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    func validateEmail(email: String) -> Bool{
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
-        var emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        let result = emailTest!.evaluateWithObject(email)
-        return result
-    }
-    
-    
 }
