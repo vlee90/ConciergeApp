@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EB00C63C1A1C14D900F02C6E /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00C63B1A1C14D900F02C6E /* GalleryCollectionViewCell.swift */; };
+		EB00C63E1A1C150500F02C6E /* GalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB00C63D1A1C150500F02C6E /* GalleryCollectionViewCell.xib */; };
+		EB00C6401A1C255100F02C6E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00C63F1A1C255100F02C6E /* Protocols.swift */; };
+		EB2209CE1A1BCA5E0085D372 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2209CD1A1BCA5E0085D372 /* AlertController.swift */; };
+		EB2209D01A1BE1110085D372 /* CreateJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2209CF1A1BE1110085D372 /* CreateJobViewController.swift */; };
+		EBAB58101A1BFF550066E898 /* ValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAB580F1A1BFF550066E898 /* ValidationController.swift */; };
+		EBAB58121A1C12650066E898 /* PhotoFrameworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAB58111A1C12650066E898 /* PhotoFrameworkViewController.swift */; };
+		EBDDD4A21A199B3800DFEED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */; };
+		EBDDD4A51A199B3800DFEED9 /* Concierge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4A31A199B3800DFEED9 /* Concierge.xcdatamodeld */; };
+		EBDDD4AA1A199B3800DFEED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4A81A199B3800DFEED9 /* Main.storyboard */; };
+		EBDDD4AC1A199B3800DFEED9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4AB1A199B3800DFEED9 /* Images.xcassets */; };
+		EBDDD4AF1A199B3800DFEED9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4AD1A199B3800DFEED9 /* LaunchScreen.xib */; };
+		EBDDD4BB1A199B3800DFEED9 /* ConciergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4BA1A199B3800DFEED9 /* ConciergeTests.swift */; };
+		EBDDD4CB1A19A26A00DFEED9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4CA1A19A26A00DFEED9 /* SignUpViewController.swift */; };
+		EBDDD4CF1A19A37D00DFEED9 /* Password.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4CC1A19A37D00DFEED9 /* Password.png */; };
+		EBDDD4D01A19A37D00DFEED9 /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4CD1A19A37D00DFEED9 /* User.png */; };
+		EBDDD4D11A19A37D00DFEED9 /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = EBDDD4CE1A19A37D00DFEED9 /* Email.png */; };
+		EBDDD4D71A19E1A300DFEED9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4D61A19E1A300DFEED9 /* ProfileViewController.swift */; };
+		EBDDD4D91A1A815E00DFEED9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4D81A1A815E00DFEED9 /* LogInViewController.swift */; };
+		EBDDD4DB1A1A817800DFEED9 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4DA1A1A817800DFEED9 /* ConfirmationViewController.swift */; };
+		EBDDD4DD1A1A81AD00DFEED9 /* JobTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4DC1A1A81AD00DFEED9 /* JobTableViewController.swift */; };
+		EBDDD4DF1A1A81BE00DFEED9 /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4DE1A1A81BE00DFEED9 /* JobDetailViewController.swift */; };
+		EBDDD4E11A1A83EE00DFEED9 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4E01A1A83EE00DFEED9 /* NetworkController.swift */; };
+		EBDDD4E41A1A855900DFEED9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4E31A1A855900DFEED9 /* User.swift */; };
+		EBDDD4E61A1A8AB600DFEED9 /* ThemeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4E51A1A8AB600DFEED9 /* ThemeController.swift */; };
+		EBDDD4EA1A1A8C2C00DFEED9 /* ConciergeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4E91A1A8C2C00DFEED9 /* ConciergeViewController.swift */; };
+		EBDDD4ED1A1A8DE600DFEED9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD4EC1A1A8DE500DFEED9 /* SettingsViewController.swift */; };
+		EBDDD51F1A1AA04200DFEED9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD51E1A1AA04200DFEED9 /* Constants.swift */; };
+		EBDDD5211A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD5201A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift */; };
+		EBDDD5251A1AA98500DFEED9 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDD5241A1AA98500DFEED9 /* Job.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EBDDD4B51A199B3800DFEED9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBDDD4941A199B3800DFEED9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBDDD49B1A199B3800DFEED9;
+			remoteInfo = Concierge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EB00C63B1A1C14D900F02C6E /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
+		EB00C63D1A1C150500F02C6E /* GalleryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryCollectionViewCell.xib; sourceTree = "<group>"; };
+		EB00C63F1A1C255100F02C6E /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		EB2209CD1A1BCA5E0085D372 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		EB2209CF1A1BE1110085D372 /* CreateJobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateJobViewController.swift; sourceTree = "<group>"; };
+		EBAB580F1A1BFF550066E898 /* ValidationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationController.swift; sourceTree = "<group>"; };
+		EBAB58111A1C12650066E898 /* PhotoFrameworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFrameworkViewController.swift; sourceTree = "<group>"; };
+		EBDDD49C1A199B3800DFEED9 /* Concierge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concierge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBDDD4A01A199B3800DFEED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EBDDD4A41A199B3800DFEED9 /* Concierge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Concierge.xcdatamodel; sourceTree = "<group>"; };
+		EBDDD4A91A199B3800DFEED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EBDDD4AB1A199B3800DFEED9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Concierge/Images.xcassets; sourceTree = "<group>"; };
+		EBDDD4AE1A199B3800DFEED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EBDDD4B41A199B3800DFEED9 /* ConciergeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConciergeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBDDD4B91A199B3800DFEED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBDDD4BA1A199B3800DFEED9 /* ConciergeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciergeTests.swift; sourceTree = "<group>"; };
+		EBDDD4CA1A19A26A00DFEED9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = ../SignUpViewController.swift; sourceTree = "<group>"; };
+		EBDDD4CC1A19A37D00DFEED9 /* Password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Password.png; sourceTree = "<group>"; };
+		EBDDD4CD1A19A37D00DFEED9 /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = "<group>"; };
+		EBDDD4CE1A19A37D00DFEED9 /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
+		EBDDD4D61A19E1A300DFEED9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EBDDD4D81A1A815E00DFEED9 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		EBDDD4DA1A1A817800DFEED9 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		EBDDD4DC1A1A81AD00DFEED9 /* JobTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTableViewController.swift; sourceTree = "<group>"; };
+		EBDDD4DE1A1A81BE00DFEED9 /* JobDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobDetailViewController.swift; path = ../JobDetailViewController.swift; sourceTree = "<group>"; };
+		EBDDD4E01A1A83EE00DFEED9 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		EBDDD4E31A1A855900DFEED9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EBDDD4E51A1A8AB600DFEED9 /* ThemeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeController.swift; sourceTree = "<group>"; };
+		EBDDD4E91A1A8C2C00DFEED9 /* ConciergeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConciergeViewController.swift; sourceTree = "<group>"; };
+		EBDDD4EC1A1A8DE500DFEED9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EBDDD51E1A1AA04200DFEED9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EBDDD5201A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConciergeJobDetailViewController.swift; sourceTree = "<group>"; };
+		EBDDD5241A1AA98500DFEED9 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EBDDD4991A199B3800DFEED9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBDDD4B11A199B3800DFEED9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EB4E9D881A1BF29700865383 /* Accessory */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4E51A1A8AB600DFEED9 /* ThemeController.swift */,
+				EBDDD4E01A1A83EE00DFEED9 /* NetworkController.swift */,
+				EB2209CD1A1BCA5E0085D372 /* AlertController.swift */,
+				EBAB580F1A1BFF550066E898 /* ValidationController.swift */,
+				EBDDD51E1A1AA04200DFEED9 /* Constants.swift */,
+				EB00C63F1A1C255100F02C6E /* Protocols.swift */,
+			);
+			name = Accessory;
+			sourceTree = "<group>";
+		};
+		EBAB58131A1C12780066E898 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4EC1A1A8DE500DFEED9 /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		EBAB58141A1C128D0066E898 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4D61A19E1A300DFEED9 /* ProfileViewController.swift */,
+				EBAB58111A1C12650066E898 /* PhotoFrameworkViewController.swift */,
+				EB00C63B1A1C14D900F02C6E /* GalleryCollectionViewCell.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		EBDDD4931A199B3800DFEED9 = {
+			isa = PBXGroup;
+			children = (
+				EBDDD49E1A199B3800DFEED9 /* Concierge */,
+				EBDDD4B71A199B3800DFEED9 /* ConciergeTests */,
+				EBDDD49D1A199B3800DFEED9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EBDDD49D1A199B3800DFEED9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD49C1A199B3800DFEED9 /* Concierge.app */,
+				EBDDD4B41A199B3800DFEED9 /* ConciergeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EBDDD49E1A199B3800DFEED9 /* Concierge */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4A11A199B3800DFEED9 /* AppDelegate.swift */,
+				EBDDD4D41A19A39D00DFEED9 /* Controller */,
+				EBDDD4D31A19A39700DFEED9 /* View */,
+				EBDDD4D21A19A38E00DFEED9 /* Model */,
+				EBDDD4D51A19A3B100DFEED9 /* Images */,
+				EBDDD4A31A199B3800DFEED9 /* Concierge.xcdatamodeld */,
+				EBDDD49F1A199B3800DFEED9 /* Supporting Files */,
+			);
+			path = Concierge;
+			sourceTree = "<group>";
+		};
+		EBDDD49F1A199B3800DFEED9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4A01A199B3800DFEED9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EBDDD4B71A199B3800DFEED9 /* ConciergeTests */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4BA1A199B3800DFEED9 /* ConciergeTests.swift */,
+				EBDDD4B81A199B3800DFEED9 /* Supporting Files */,
+			);
+			path = ConciergeTests;
+			sourceTree = "<group>";
+		};
+		EBDDD4B81A199B3800DFEED9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4B91A199B3800DFEED9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EBDDD4D21A19A38E00DFEED9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD5241A1AA98500DFEED9 /* Job.swift */,
+				EBDDD4E31A1A855900DFEED9 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		EBDDD4D31A19A39700DFEED9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4A81A199B3800DFEED9 /* Main.storyboard */,
+				EB00C63D1A1C150500F02C6E /* GalleryCollectionViewCell.xib */,
+				EBDDD4AD1A199B3800DFEED9 /* LaunchScreen.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		EBDDD4D41A19A39D00DFEED9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EB4E9D881A1BF29700865383 /* Accessory */,
+				EBDDD4E21A1A850D00DFEED9 /* StartUp */,
+				EBDDD4EB1A1A8C3A00DFEED9 /* TabBarViews */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		EBDDD4D51A19A3B100DFEED9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4CC1A19A37D00DFEED9 /* Password.png */,
+				EBDDD4CD1A19A37D00DFEED9 /* User.png */,
+				EBDDD4CE1A19A37D00DFEED9 /* Email.png */,
+				EBDDD4AB1A199B3800DFEED9 /* Images.xcassets */,
+			);
+			name = Images;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		EBDDD4E21A1A850D00DFEED9 /* StartUp */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4CA1A19A26A00DFEED9 /* SignUpViewController.swift */,
+				EBDDD4DA1A1A817800DFEED9 /* ConfirmationViewController.swift */,
+				EBDDD4D81A1A815E00DFEED9 /* LogInViewController.swift */,
+			);
+			name = StartUp;
+			sourceTree = "<group>";
+		};
+		EBDDD4EB1A1A8C3A00DFEED9 /* TabBarViews */ = {
+			isa = PBXGroup;
+			children = (
+				EBAB58141A1C128D0066E898 /* Profile */,
+				EBDDD5221A1AA7F800DFEED9 /* Concierge */,
+				EBDDD5231A1AA81200DFEED9 /* Jobs */,
+				EBAB58131A1C12780066E898 /* Settings */,
+			);
+			name = TabBarViews;
+			sourceTree = "<group>";
+		};
+		EBDDD5221A1AA7F800DFEED9 /* Concierge */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4E91A1A8C2C00DFEED9 /* ConciergeViewController.swift */,
+				EBDDD5201A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift */,
+			);
+			name = Concierge;
+			sourceTree = "<group>";
+		};
+		EBDDD5231A1AA81200DFEED9 /* Jobs */ = {
+			isa = PBXGroup;
+			children = (
+				EBDDD4DC1A1A81AD00DFEED9 /* JobTableViewController.swift */,
+				EBDDD4DE1A1A81BE00DFEED9 /* JobDetailViewController.swift */,
+				EB2209CF1A1BE1110085D372 /* CreateJobViewController.swift */,
+			);
+			name = Jobs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EBDDD49B1A199B3800DFEED9 /* Concierge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBDDD4BE1A199B3800DFEED9 /* Build configuration list for PBXNativeTarget "Concierge" */;
+			buildPhases = (
+				EBDDD4981A199B3800DFEED9 /* Sources */,
+				EBDDD4991A199B3800DFEED9 /* Frameworks */,
+				EBDDD49A1A199B3800DFEED9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Concierge;
+			productName = Concierge;
+			productReference = EBDDD49C1A199B3800DFEED9 /* Concierge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EBDDD4B31A199B3800DFEED9 /* ConciergeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBDDD4C11A199B3800DFEED9 /* Build configuration list for PBXNativeTarget "ConciergeTests" */;
+			buildPhases = (
+				EBDDD4B01A199B3800DFEED9 /* Sources */,
+				EBDDD4B11A199B3800DFEED9 /* Frameworks */,
+				EBDDD4B21A199B3800DFEED9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EBDDD4B61A199B3800DFEED9 /* PBXTargetDependency */,
+			);
+			name = ConciergeTests;
+			productName = ConciergeTests;
+			productReference = EBDDD4B41A199B3800DFEED9 /* ConciergeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBDDD4941A199B3800DFEED9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = VincentLee;
+				TargetAttributes = {
+					EBDDD49B1A199B3800DFEED9 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					EBDDD4B31A199B3800DFEED9 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = EBDDD49B1A199B3800DFEED9;
+					};
+				};
+			};
+			buildConfigurationList = EBDDD4971A199B3800DFEED9 /* Build configuration list for PBXProject "Concierge" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EBDDD4931A199B3800DFEED9;
+			productRefGroup = EBDDD49D1A199B3800DFEED9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EBDDD49B1A199B3800DFEED9 /* Concierge */,
+				EBDDD4B31A199B3800DFEED9 /* ConciergeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EBDDD49A1A199B3800DFEED9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDDD4D11A19A37D00DFEED9 /* Email.png in Resources */,
+				EBDDD4AA1A199B3800DFEED9 /* Main.storyboard in Resources */,
+				EBDDD4AF1A199B3800DFEED9 /* LaunchScreen.xib in Resources */,
+				EBDDD4D01A19A37D00DFEED9 /* User.png in Resources */,
+				EBDDD4CF1A19A37D00DFEED9 /* Password.png in Resources */,
+				EB00C63E1A1C150500F02C6E /* GalleryCollectionViewCell.xib in Resources */,
+				EBDDD4AC1A199B3800DFEED9 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBDDD4B21A199B3800DFEED9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EBDDD4981A199B3800DFEED9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDDD4DB1A1A817800DFEED9 /* ConfirmationViewController.swift in Sources */,
+				EBDDD4CB1A19A26A00DFEED9 /* SignUpViewController.swift in Sources */,
+				EBDDD4E61A1A8AB600DFEED9 /* ThemeController.swift in Sources */,
+				EB00C6401A1C255100F02C6E /* Protocols.swift in Sources */,
+				EBDDD4A21A199B3800DFEED9 /* AppDelegate.swift in Sources */,
+				EBAB58121A1C12650066E898 /* PhotoFrameworkViewController.swift in Sources */,
+				EBDDD5211A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift in Sources */,
+				EBDDD4D71A19E1A300DFEED9 /* ProfileViewController.swift in Sources */,
+				EBDDD4D91A1A815E00DFEED9 /* LogInViewController.swift in Sources */,
+				EBDDD4DF1A1A81BE00DFEED9 /* JobDetailViewController.swift in Sources */,
+				EB2209CE1A1BCA5E0085D372 /* AlertController.swift in Sources */,
+				EBDDD4DD1A1A81AD00DFEED9 /* JobTableViewController.swift in Sources */,
+				EBDDD4A51A199B3800DFEED9 /* Concierge.xcdatamodeld in Sources */,
+				EBDDD4ED1A1A8DE600DFEED9 /* SettingsViewController.swift in Sources */,
+				EB2209D01A1BE1110085D372 /* CreateJobViewController.swift in Sources */,
+				EBDDD4EA1A1A8C2C00DFEED9 /* ConciergeViewController.swift in Sources */,
+				EBDDD51F1A1AA04200DFEED9 /* Constants.swift in Sources */,
+				EBDDD4E41A1A855900DFEED9 /* User.swift in Sources */,
+				EBDDD4E11A1A83EE00DFEED9 /* NetworkController.swift in Sources */,
+				EBDDD5251A1AA98500DFEED9 /* Job.swift in Sources */,
+				EB00C63C1A1C14D900F02C6E /* GalleryCollectionViewCell.swift in Sources */,
+				EBAB58101A1BFF550066E898 /* ValidationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBDDD4B01A199B3800DFEED9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDDD4BB1A199B3800DFEED9 /* ConciergeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EBDDD4B61A199B3800DFEED9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBDDD49B1A199B3800DFEED9 /* Concierge */;
+			targetProxy = EBDDD4B51A199B3800DFEED9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EBDDD4A81A199B3800DFEED9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBDDD4A91A199B3800DFEED9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EBDDD4AD1A199B3800DFEED9 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBDDD4AE1A199B3800DFEED9 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EBDDD4BC1A199B3800DFEED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EBDDD4BD1A199B3800DFEED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBDDD4BF1A199B3800DFEED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Concierge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EBDDD4C01A199B3800DFEED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Concierge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EBDDD4C21A199B3800DFEED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ConciergeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Concierge.app/Concierge";
+			};
+			name = Debug;
+		};
+		EBDDD4C31A199B3800DFEED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ConciergeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Concierge.app/Concierge";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EBDDD4971A199B3800DFEED9 /* Build configuration list for PBXProject "Concierge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBDDD4BC1A199B3800DFEED9 /* Debug */,
+				EBDDD4BD1A199B3800DFEED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBDDD4BE1A199B3800DFEED9 /* Build configuration list for PBXNativeTarget "Concierge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBDDD4BF1A199B3800DFEED9 /* Debug */,
+				EBDDD4C01A199B3800DFEED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBDDD4C11A199B3800DFEED9 /* Build configuration list for PBXNativeTarget "ConciergeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBDDD4C21A199B3800DFEED9 /* Debug */,
+				EBDDD4C31A199B3800DFEED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EBDDD4A31A199B3800DFEED9 /* Concierge.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EBDDD4A41A199B3800DFEED9 /* Concierge.xcdatamodel */,
+			);
+			currentVersion = EBDDD4A41A199B3800DFEED9 /* Concierge.xcdatamodel */;
+			path = Concierge.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EBDDD4941A199B3800DFEED9 /* Project object */;
+}
