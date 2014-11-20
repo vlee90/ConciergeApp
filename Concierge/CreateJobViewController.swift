@@ -23,21 +23,33 @@ class CreateJobViewController: UIViewController {
     var type: String?
     var location: String?
     var recurringBool: Bool!
-    
-    
-    @IBAction func createJobButtonPressed(sender: UIButton) {
-//        if self.date != nil && self.type != nil && self.location != nil {
-//            var newJob = Job(type: self.type!, time: self.date!, location: self.location!, recurring: self.recurringBool)
-            // POST Job info
-//        }
-    }
+    var dateFormatter = NSDateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         println(self.datePicker.date)
-        
-//        self.view.backgroundColor = tColor1
+        dateFormatter.set
+        //        self.view.backgroundColor = tColor1
     }
+    
+    @IBAction func createJobButtonPressed(sender: UIButton) {
+//        if self.date != nil {
+//            var newJob = Job(time: self.date!, recurring: self.recurringBool)
+//            //POST JOB
+//        }
+        println(self.datePicker.date)
+        println(self.recurringSwitch.on)
+    }
+    
+    
+//    POST /jobs
+//    (input JWT header and..)
+//    {
+//    "jobDate": "2014-12-12T01:32:21.196Z",
+//    "recurring": "true"
+//    }
+//    "jobDate": "2014-11-22 05:00:13 +0000"
+
     
 
     

@@ -14,10 +14,8 @@ class Job {
     var location: String?
     var recurring: Bool?
     
-    init(type: String, time: NSDate, location: String, recurring: Bool) {
-        self.type = type
+    init(time: NSDate, recurring: Bool) {
         self.time = time
-        self.location = location
         self.recurring = recurring
     }
 }

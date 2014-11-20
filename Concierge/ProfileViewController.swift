@@ -27,10 +27,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     var userConciergeMode: Bool = true
     var textFieldArray: [UITextField]!
     var viewControllerArray: [UIViewController]!
+    var tabbarcontroller = UITabBarController()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.setTextFieldsEnabled(false)
         self.passwordTextField.secureTextEntry = true
         self.textFieldArray = [self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.phoneNumberTextField, self.passwordTextField]
@@ -43,9 +45,54 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
         self.view.backgroundColor = tColor1
 
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        // Used so profileView doesn't continuatelly reload itself.
+        if self.networkController.numberOfJWTChecks == 0 {
+            self.checkForJWT()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func checkForJWT() {
+        self.networkController.numberOfJWTChecks++
+        //  Checks if token is saved in user default
+        if let token = NSUserDefaults.standardUserDefaults().valueForKey(kTokenKey) as? String {
+            //  TRUE: Check if token matches token in database.
+            self.networkController.token = token
+            self.networkController.GETrequest(kPOSTRoutes.Concierge.rawValue, query: nil, completionFunction: { (info, error) -> Void in
+                if error != nil {
+                    println(error!.description)
+                }
+                else {
+                    let conciegreVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConciergeNavCrtl.rawValue) as UINavigationController
+                    var profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
+                    let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
+                    let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
+                    var concierge = info.objectForKey("concierge") as Bool
+                    if concierge == true {
+                        let viewControllerArray = [conciegreVC, profileVC, jobNavC, settingVC]
+                        self.tabbarcontroller.setViewControllers(viewControllerArray, animated: false)
+                        self.presentViewController(self.tabbarcontroller, animated: false, completion: nil)
+                    }
+                    else {
+                        let viewControllerArray = [profileVC, jobNavC, settingVC]
+                        self.tabbarcontroller
+                            .setViewControllers(viewControllerArray, animated: false)
+                        self.presentViewController(self.tabbarcontroller, animated: false, completion: nil)
+                    }
+                }
+            })
+        }
+        else {
+            let signUpVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SignUpVC.rawValue) as SignUpViewController
+            signUpVC.modalInPopover = true
+            self.presentViewController(signUpVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func changeInformationButtonPressed(sender: UIButton) {

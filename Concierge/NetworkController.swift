@@ -9,7 +9,7 @@
 import Foundation
 
 class NetworkController {
-    let protcol: String = "http://"
+    let protcol: String = "https://"
     let domain: String = "quiet-dusk-4540.herokuapp.com"
 
     var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -17,6 +17,7 @@ class NetworkController {
     var queue = NSOperationQueue.mainQueue()
     
     var token: String?
+    var numberOfJWTChecks = 0
     
     init() {
         self.session = NSURLSession(configuration: self.configuration)
@@ -38,12 +39,13 @@ class NetworkController {
         if query != nil {
             urlString += "?\(query!)"
         }
-        let url = NSURL(fileURLWithPath: urlString)
+        let url = NSURL(string: urlString)
         var request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         if self.token != nil {
-            request.setValue("token \(self.token!)", forHTTPHeaderField: "jwt")
+            request.setValue(self.token!, forHTTPHeaderField: "jwt")
         }
         var dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (data, httpResponse, error) -> Void in
             if error != nil {
@@ -54,7 +56,7 @@ class NetworkController {
                     switch response.statusCode {
                     case 200...299:
                         var err: NSError?
-                        if let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &err) as? NSDictionary {
+                        if let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &err) as? NSDictionary {
                             self.queue.addOperationWithBlock({ () -> Void in
                                 completionFunction(info: dictionary, error: error)
                             })
