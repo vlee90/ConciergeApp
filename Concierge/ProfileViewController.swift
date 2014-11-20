@@ -26,7 +26,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     var userConciergeMode: Bool = true
     var textFieldArray: [UITextField]!
     var viewControllerArray: [UIViewController]!
-    var tabBarControllerInstance: UITabBarController!
     
     
     override func viewDidLoad() {
@@ -64,13 +63,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
                     self.setTextFieldsEnabled(false)
                     self.switchConciergeStatusButton.enabled = false
                     self.setViewControllersForTabBarController()
-                    if userConciergeMode == true {
-                        self.tabBarControllerInstance.selectedIndex = 1
-                    }
-                    else {
-                        self.tabBarControllerInstance.selectedIndex = 0
-                    }
-                    println(self.tabBarControllerInstance.viewControllers)
                     self.changeMode = false
                 }
                 else {
@@ -128,11 +120,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
         let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
         if self.userConciergeMode == true {
             self.viewControllerArray = [conciegreVC, profileVC, jobNavC, settingVC]
-            self.tabBarControllerInstance.setViewControllers(self.viewControllerArray, animated: true)
+            self.tabBarController?.selectedIndex = 1
+            self.tabBarController?.setViewControllers(self.viewControllerArray, animated: true)
         }
         else {
             self.viewControllerArray = [profileVC, jobNavC, settingVC]
-            self.tabBarControllerInstance.setViewControllers(self.viewControllerArray, animated: true)
+            self.tabBarController?.selectedIndex = 0
+            self.tabBarController?.setViewControllers(self.viewControllerArray, animated: true)
         }
     }
 }

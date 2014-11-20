@@ -55,7 +55,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         self.containerView.layer.cornerRadius = 10
         self.loginButton.layer.cornerRadius = 10
         self.signUpButton.layer.cornerRadius = 10
-//        self.directionLabel.sizeToFit()
         self.titleLabel.adjustsFontSizeToFitWidth = true
         self.directionLabel.adjustsFontSizeToFitWidth = true
 

@@ -12,4 +12,12 @@ class Job {
     var type: String?
     var time: NSDate?
     var location: String?
+    var recurring: Bool?
+    
+    init(type: String, time: NSDate, location: String, recurring: Bool) {
+        self.type = type
+        self.time = time
+        self.location = location
+        self.recurring = recurring
+    }
 }

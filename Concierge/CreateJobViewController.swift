@@ -12,19 +12,29 @@ class CreateJobViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var recurringSwitch: UISwitch!
     @IBOutlet weak var createJobButton: UIButton!
+    @IBOutlet weak var weatherSwitch: UISwitch!
     
+    @IBOutlet weak var wakeUpLabel: UILabel!
+    @IBOutlet weak var optionLabel: UILabel!
+    @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var recurringLabel: UILabel!
+    
+    var date: NSDate?
+    var type: String?
+    var location: String?
+    var recurringBool: Bool!
     
     
     @IBAction func createJobButtonPressed(sender: UIButton) {
-        // POST Job info
-        
+//        if self.date != nil && self.type != nil && self.location != nil {
+//            var newJob = Job(type: self.type!, time: self.date!, location: self.location!, recurring: self.recurringBool)
+            // POST Job info
+//        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         println(self.datePicker.date)
-        datePicker.addTarget(self, action: "timeChanged:", forControlEvents: UIControlEvents.ValueChanged)
-        self.recurringSwitch.addTarget(self, action: "recurringSwitched:", forControlEvents: UIControlEvents.ValueChanged)
     }
     
 
@@ -35,5 +45,10 @@ class CreateJobViewController: UIViewController {
     
     func recurringSwitched(action: UIControlEvents) {
         println(self.recurringSwitch.on)
+        
     }
+//    @IBAction func recurringSwtiched(sender: UISwitch) {
+//    }
+//    @IBAction func weatherSwitched(sender: UISwitch) {
+//    }
 }
