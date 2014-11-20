@@ -92,6 +92,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                         }
                         else {
                             let token = postResponse.objectForKey("jwt") as String
+                            self.networkController.token = token
                             var user = User(username: self.emailTextField.text, password: self.passwordTextField.text, phone: self.phoneNumberTextField.text, first: self.firstNameTextField.text, last: self.lastNameTextField.text, jwtToken: token)
                             let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConfirmationVC.rawValue) as ConfirmationViewController
                             toVC.user = user
@@ -147,14 +148,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         self.passwordTextField.autocorrectionType = UITextAutocorrectionType.No
     }
     
-    func checkForJWT() {
-        //  Checks if token is saved in user default
-        if let tokenKey = NSUserDefaults.standardUserDefaults().valueForKey(kTokenKey) as? String {
-            //  TRUE: Check if token matches token in database.
-                //  TRUE: Present ProfileVC
-            
-                //  FALSE: Present LoginVC
-        }
-            //  FALSE: Present SignUpVC
-    }
+//    func checkForJWT() {
+//        //  Checks if token is saved in user default
+//        if let tokenKey = NSUserDefaults.standardUserDefaults().valueForKey(kTokenKey) as? String {
+//            //  TRUE: Check if token matches token in database.
+//                //  TRUE: Present ProfileVC
+//            
+//                //  FALSE: Present LoginVC
+//        }
+//            //  FALSE: Present SignUpVC
+//    }
 }

@@ -16,6 +16,8 @@ class NetworkController {
     var session: NSURLSession
     var queue = NSOperationQueue.mainQueue()
     
+    var token: String?
+    
     init() {
         self.session = NSURLSession(configuration: self.configuration)
     }
@@ -39,6 +41,10 @@ class NetworkController {
         let url = NSURL(fileURLWithPath: urlString)
         var request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "GET"
+        
+        if self.token != nil {
+            request.setValue("token \(self.token!)", forHTTPHeaderField: "jwt")
+        }
         var dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (data, httpResponse, error) -> Void in
             if error != nil {
                 println(error.description)
@@ -83,6 +89,9 @@ class NetworkController {
 //        request.setValue("\(length)", forHTTPHeaderField: "Content-Length")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData
+        if self.token != nil {
+            request.setValue(self.token!, forHTTPHeaderField: "jwt")
+        }
         let dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (responseData, httpResponse, error) -> Void in
             if error != nil {
                 println(error.description)

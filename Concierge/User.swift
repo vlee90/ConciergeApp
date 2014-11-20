@@ -19,7 +19,11 @@ class User {
     var concierge: Bool = false
     var confirmed: Bool = false
     var jwtToken: String?
-    var jobArray: Array<Job>?
+    var jobs: Array<Job>?
+    var conciergeJobs: Array<Job>?
+    var id: String?
+    var confirmationCode: String?
+    
     
     init(username: String, password: String, phone: String, first: String, last: String, jwtToken: String) {
         self.username = username
@@ -29,4 +33,5 @@ class User {
         self.last = last
         self.jwtToken = jwtToken
     }
+    
 }

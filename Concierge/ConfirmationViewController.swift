@@ -39,7 +39,9 @@ class ConfirmationViewController: UIViewController {
             else {
                 // ConfirmationCheck
                 // PostResponse is the entire userObject
+                self.setRemainingUserProperties(self.user!, postDictionary: postResponse)
                 if self.user!.confirmed == true {
+                    self.user!.confirmationCode = self.confirmationTextField.text
                     self.presentViewController(self.tabbarController, animated: true, completion: nil)
                 }
                 else {
@@ -55,14 +57,21 @@ class ConfirmationViewController: UIViewController {
         var profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
         let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
         let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
-        if true {
-            self.viewControllerArray = [conciegreVC, profileVC, jobNavC, settingVC]
-            self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
-        }
-        else {
+//        if true {
+//            self.viewControllerArray = [conciegreVC, profileVC, jobNavC, settingVC]
+//            self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
+//        }
+//        else {
             self.viewControllerArray = [profileVC, jobNavC, settingVC]
             self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
-        }
+//        }
     }
-
+    
+    func setRemainingUserProperties(user: User, postDictionary: NSDictionary) {
+        user.id = postDictionary.valueForKey("_id") as? String
+        user.confirmed = postDictionary.valueForKey("confirmed") as Bool
+        user.jobs = postDictionary.valueForKey("jobs") as? Array
+        user.conciergeJobs = postDictionary.valueForKey("conciergeJobs") as? Array
+        
+    }
 }

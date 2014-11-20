@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TqF-wz-nmO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TqF-wz-nmO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -834,14 +834,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A conformation number has been sent to your phone." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enj-F9-wFc">
-                                <rect key="frame" x="96" y="120" width="410" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A conformation number has been sent to your phone." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enj-F9-wFc">
+                                <rect key="frame" x="95" y="120" width="410" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDa-cT-qTi">
-                                <rect key="frame" x="272" y="329" width="55" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDa-cT-qTi">
+                                <rect key="frame" x="272" y="231" width="55" height="30"/>
                                 <state key="normal" title="Confirm">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -858,8 +858,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UGy-XO-I9h" firstAttribute="top" secondItem="enj-F9-wFc" secondAttribute="bottom" constant="30" id="CRC-Q1-oMb"/>
+                            <constraint firstAttribute="centerX" secondItem="cDa-cT-qTi" secondAttribute="centerX" id="GPm-1P-Wce"/>
                             <constraint firstItem="cDa-cT-qTi" firstAttribute="top" secondItem="enj-F9-wFc" secondAttribute="bottom" constant="50" id="OUs-tJ-Qci"/>
                             <constraint firstItem="enj-F9-wFc" firstAttribute="top" secondItem="flA-gC-8Qx" secondAttribute="bottom" constant="100" id="a9D-su-2Y9"/>
+                            <constraint firstItem="cDa-cT-qTi" firstAttribute="top" secondItem="UGy-XO-I9h" secondAttribute="bottom" constant="30" id="tts-ns-nXJ"/>
                             <constraint firstAttribute="centerX" secondItem="enj-F9-wFc" secondAttribute="centerX" id="xsn-LS-RV9"/>
                             <constraint firstAttribute="centerX" secondItem="UGy-XO-I9h" secondAttribute="centerX" id="yly-v9-Ld3"/>
                         </constraints>
