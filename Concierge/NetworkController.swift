@@ -10,7 +10,7 @@ import Foundation
 
 class NetworkController {
     let protcol: String = "http://"
-    let domain: String = "configURL"
+    let domain: String = "quiet-dusk-4540.herokuapp.com"
 
     var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
     var session: NSURLSession
@@ -63,16 +63,25 @@ class NetworkController {
     }
     
     
-    func POSTrequest(endpoint: String, query: String, dictionary: NSDictionary, completionFunction: (postResponse: NSData, error: NSError?) -> Void) -> Void {
+    func POSTrequest(endpoint: String, query: String?, dictionary: NSDictionary?, completionFunction: (postResponse: NSDictionary, error: NSError?) -> Void) -> Void {
         var urlString = "\(self.protcol)" + "\(self.domain)" + "\(endpoint)"
-        let url = NSURL(fileURLWithPath: urlString)
+        let url = NSURL(string: urlString)
         var request = NSMutableURLRequest(URL: url!)
         var error: NSError?
-        var postData = NSJSONSerialization.dataWithJSONObject(dictionary, options: nil, error: &error)
-        let length = postData!.length
+        var postData: NSData?
+        if dictionary != nil {
+            postData = NSJSONSerialization.dataWithJSONObject(dictionary!, options: nil, error: &error)
+        }
+        else {
+            postData = nil
+        }
+        if error != nil {
+            println(error?.localizedDescription)
+        }
+//        let length = postData!.length
         request.HTTPMethod = "POST"
-        request.setValue("\(length)", forHTTPHeaderField: "Content-Length")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+//        request.setValue("\(length)", forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData
         let dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (responseData, httpResponse, error) -> Void in
             if error != nil {
@@ -82,8 +91,11 @@ class NetworkController {
                 if let response = httpResponse as? NSHTTPURLResponse {
                     switch response.statusCode {
                     case 200...299:
+                        println(response.statusCode)
+                        var err: NSError?
+                        var parsedData = NSJSONSerialization.JSONObjectWithData(responseData, options: nil, error: &err) as NSDictionary
                         self.queue.addOperationWithBlock({ () -> Void in
-                            completionFunction(postResponse: responseData, error: error)
+                            completionFunction(postResponse: parsedData, error: error)
                         })
                     default:
                         println(response.statusCode)

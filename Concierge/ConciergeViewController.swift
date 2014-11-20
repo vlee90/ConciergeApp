@@ -12,6 +12,7 @@ class ConciergeViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var workButton: UIButton!
     var workBool: Bool = false
+    var networkController = NetworkController.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,21 +20,37 @@ class ConciergeViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.delegate = self
         self.workButton.setTitle("Work", forState: UIControlState.Normal)
         
+        self.view.backgroundColor = tColor1
+        
     }
     
     @IBAction func workButtonPressed(sender: UIButton) {
-        //POST Work status
         if self.workBool == false {
-            self.workButton.backgroundColor = UIColor.redColor()
-            self.workButton.setTitle("Stop", forState: UIControlState.Normal)
-            self.workButton.titleLabel?.backgroundColor = UIColor.redColor()
-            self.workBool = true
+            self.networkController.POSTrequest(kPOSTRoutes.ConciergeAvailable.rawValue, query: nil, dictionary: nil, completionFunction: { (postResponse, error) -> Void in
+                if error != nil {
+                    println(error!.description)
+                }
+                else {
+                    println(postResponse)
+                    self.workButton.backgroundColor = UIColor.redColor()
+                    self.workButton.setTitle("Stop", forState: UIControlState.Normal)
+                    self.workButton.titleLabel?.backgroundColor = UIColor.redColor()
+                    self.workBool = true
+                }
+            })
         } else {
-            //POST Work status
-            self.workButton.backgroundColor = UIColor.greenColor()
-            self.workButton.setTitle("Work", forState: UIControlState.Normal)
-            self.workButton.titleLabel?.backgroundColor = UIColor.greenColor()
-            self.workBool = false
+            self.networkController.POSTrequest(kPOSTRoutes.ConciergeUnavailable.rawValue, query: nil, dictionary: nil, completionFunction: { (postResponse, error) -> Void in
+                if error != nil {
+                    println(error!.description)
+                }
+                else {
+                    println(postResponse)
+                    self.workButton.backgroundColor = UIColor.greenColor()
+                    self.workButton.setTitle("Work", forState: UIControlState.Normal)
+                    self.workButton.titleLabel?.backgroundColor = UIColor.greenColor()
+                    self.workBool = false
+                }
+            })
         }
     }
     

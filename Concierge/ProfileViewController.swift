@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     
     var validationController = ValidationController.sharedInstance
     var alertController = AlertController.sharedInstance
+    var networkController = NetworkController.sharedInstance
     
     var changeMode: Bool = false
     var userConciergeMode: Bool = true
@@ -38,6 +39,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
         let profileImagePress = UITapGestureRecognizer(target: self, action: "profileImagePressed:")
         self.profileImageView.addGestureRecognizer(profileImagePress)
         self.switchConciergeStatusButton.enabled = false
+        
+        self.view.backgroundColor = tColor1
 
     }
     override func didReceiveMemoryWarning() {

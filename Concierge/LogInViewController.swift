@@ -24,6 +24,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewControllersForTabBarController()
+        self.view.backgroundColor = tColor1
         self.setUpKeyboard()
         self.textFieldArray = [self.emailTextField, self.passwordTextField]
     }

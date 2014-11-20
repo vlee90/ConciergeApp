@@ -38,9 +38,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         self.setUpKeyboard()
         self.textFieldArray = [self.phoneNumberTextField, self.emailTextField, self.passwordTextField, self.firstNameTextField, self.lastNameTextField]
         
-//        self.networkController.GETrequest(<#endpoint: String#>, query: <#String?#>) { (info, error) -> Void in
-//            <#code#>
-//        }
         self.view.backgroundColor = tColor1
         self.containerView.backgroundColor = tColor2
         for textfield in textFieldArray {
@@ -57,7 +54,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         self.signUpButton.layer.cornerRadius = 10
         self.titleLabel.adjustsFontSizeToFitWidth = true
         self.directionLabel.adjustsFontSizeToFitWidth = true
-
+        
 
     }
     
@@ -72,23 +69,43 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             let fieldsNotFilledAlert = self.alertController.fieldsLeftUnFilled()
             self.presentViewController(fieldsNotFilledAlert, animated: true, completion: nil)
         }
+        //  Fields are filled out.
         else {
             // Tier 2: Checks if email and phone number are valid
-            if self.validationController.validateEmail(self.emailTextField.text) == true && self.validationController.validatePhoneNumber(self.phoneNumberTextField.text) == true{
-                var loginDictionary: NSMutableDictionary = [
-                    "username" : self.emailTextField.text,
-                    "password" : self.passwordTextField.text,
-                    "phone" : self.phoneNumberTextField.text,
-                    "name" : [
-                        "first" : self.firstNameTextField.text,
-                        "last" : self.lastNameTextField.text
+            if self.validationController.validateEmail(self.emailTextField.text) == true && self.validationController.validatePhoneNumber(self.phoneNumberTextField.text) == true {
+                //  Tier 3: Checks if password is valid
+                if self.validationController.validatePassword(self.passwordTextField.text) == true {
+                    var loginDictionary: NSMutableDictionary = [
+                        "username" : self.emailTextField.text,
+                        "password" : self.passwordTextField.text,
+                        "phone" : self.phoneNumberTextField.text,
+                        "name" : [
+                            "first" : self.firstNameTextField.text,
+                            "last" : self.lastNameTextField.text
+                        ]
                     ]
-                ]
-                println(loginDictionary)
-                // POST User SignUp Info
-                let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConfirmationVC.rawValue) as ConfirmationViewController
-                self.presentViewController(toVC, animated: true, completion: nil)
+                    println(loginDictionary)
+                    //  Network POST Call
+                    self.networkController.POSTrequest(kPOSTRoutes.User.rawValue, query: nil, dictionary: loginDictionary, completionFunction: { (postResponse, error) -> Void in
+                        if error != nil {
+                            println(error!.description)
+                        }
+                        else {
+                            let token = postResponse.objectForKey("jwt") as String
+                            var user = User(username: self.emailTextField.text, password: self.passwordTextField.text, phone: self.phoneNumberTextField.text, first: self.firstNameTextField.text, last: self.lastNameTextField.text, jwtToken: token)
+                            let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConfirmationVC.rawValue) as ConfirmationViewController
+                            toVC.user = user
+                            self.presentViewController(toVC, animated: true, completion: nil)
+                        }
+                    })
+                }
+                //  Password not valid
+                else {
+                    let notValidPasswordAlert = self.alertController.notValidPassword()
+                    self.presentViewController(notValidPasswordAlert, animated: true, completion: nil)
+                }
             }
+            //  Phone/Email not valid
             else {
                 let notValidAlert = self.alertController.phoneAndEmailNotValid()
                 self.presentViewController(notValidAlert, animated: true, completion: nil)

@@ -35,6 +35,8 @@ class CreateJobViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         println(self.datePicker.date)
+        
+//        self.view.backgroundColor = tColor1
     }
     
 

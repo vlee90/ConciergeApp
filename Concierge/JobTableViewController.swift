@@ -15,6 +15,8 @@ class JobTableViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        self.view.backgroundColor = tColor1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

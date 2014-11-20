@@ -16,9 +16,13 @@ class ConfirmationViewController: UIViewController {
     var networkController = NetworkController.sharedInstance
     var alertController = AlertController.sharedInstance
     
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewControllersForTabBarController()
+        self.view.backgroundColor = tColor1
+        self.confirmationTextField.keyboardType = UIKeyboardType.NumberPad
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,13 +30,23 @@ class ConfirmationViewController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(sender: UIButton) {
-        // POST Confirmation Check
-        if false {
-            self.presentViewController(self.tabbarController, animated: true, completion: nil)
-        }
-        else {
-            let confirmationNotValidAlert = self.alertController.confirmationNotValid()
-            self.presentViewController(confirmationNotValidAlert, animated: true, completion: nil)
+        let postDict = ["confirmationCode" : "\(self.confirmationTextField.text)"]
+        self.networkController.POSTrequest(kPOSTRoutes.Confirm.rawValue, query: nil, dictionary: postDict) { (postResponse, error) -> Void in
+            // POST Confirmation Check
+            if error != nil {
+                println(error?.description)
+            }
+            else {
+                // ConfirmationCheck
+                // PostResponse is the entire userObject
+                if self.user!.confirmed == true {
+                    self.presentViewController(self.tabbarController, animated: true, completion: nil)
+                }
+                else {
+                    let confirmationNotValidAlert = self.alertController.confirmationNotValid()
+                    self.presentViewController(confirmationNotValidAlert, animated: true, completion: nil)
+                }
+            }
         }
     }
     

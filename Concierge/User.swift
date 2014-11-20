@@ -9,16 +9,24 @@
 import UIKit
 
 class User {
-    var name: String!
-    var number: String!
-    var email: String!
+    var username: String!
+    var password: String!
+    var phone: String!
+    var first: String!
+    var last: String!
     var profileImage: UIImage?
     
     var concierge: Bool = false
     var confirmed: Bool = false
     var jwtToken: String?
-//    var timeZone: String?
-    
     var jobArray: Array<Job>?
     
+    init(username: String, password: String, phone: String, first: String, last: String, jwtToken: String) {
+        self.username = username
+        self.password = password
+        self.phone = phone
+        self.first = first
+        self.last = last
+        self.jwtToken = jwtToken
+    }
 }

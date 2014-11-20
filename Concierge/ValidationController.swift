@@ -50,4 +50,11 @@ class ValidationController {
             return false
         }
     }
+    
+    func validatePassword(password: String) -> Bool {
+        let passwordRegex = "^(?=(.*\\d){1})(?=.*[A-Z])(?=.*[A-Z])[0-9a-zA-Z]{8,}"
+        var passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        let result = passwordTest!.evaluateWithObject(password)
+        return result
+    }
 }
