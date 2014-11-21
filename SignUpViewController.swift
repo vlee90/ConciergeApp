@@ -97,7 +97,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                             self.networkController.token = token
                             var user = User(username: self.emailTextField.text, password: self.passwordTextField.text, phone: self.phoneNumberTextField.text, first: self.firstNameTextField.text, last: self.lastNameTextField.text, jwtToken: token)
                             let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConfirmationVC.rawValue) as ConfirmationViewController
-                            toVC.user = user
                             self.presentViewController(toVC, animated: true, completion: nil)
                         }
                     })

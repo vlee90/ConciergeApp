@@ -11,9 +11,9 @@ import UIKit
 class JobTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
-    var tabbarcontroller = UITabBarController()
+    var tabbarcontroller = TabBarController.sharedInstance
     var networkController = NetworkController.sharedInstance
-    var user: User?
+    var storageController = StorageController.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class JobTableViewController: UIViewController, UITableViewDataSource, UITableVi
         self.view.backgroundColor = tColor1
     }
     
+    
     override func viewDidAppear(animated: Bool) {
         // Used so profileView doesn't continuatelly reload itself.
         if self.networkController.numberOfJWTChecks == 0 {
@@ -30,20 +31,22 @@ class JobTableViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    
     func checkForJWT() {
         self.networkController.numberOfJWTChecks++
         //  Checks if token is saved in user default
         if let token = NSUserDefaults.standardUserDefaults().valueForKey(kTokenKey) as? String {
             //  TRUE: Check if token matches token in database.
             self.networkController.token = token
-            self.networkController.GETrequest(kPOSTRoutes.UserInfo.rawValue, query: nil, completionFunction: { (info, error) -> Void in
+            self.networkController.GETrequest(kGETRoutes.UserInfo.rawValue, query: nil, completionFunction: { (info, error) -> Void in
                 if error != nil {
                     println(error!.description)
                 }
                 else {
-                    self.user = User()
-                    self.populateUserInformation(self.user!, info: info)
-                    self.user?.jwtToken = token
+                    self.storageController.user = User()
+                    self.populateUserInformation(self.storageController.user!, info: info)
+                    self.storageController.user?.jwtToken = token
+                    self.storageController.user = self.storageController.user!
                     let conciegreVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConciergeNavCrtl.rawValue) as UINavigationController
                     var profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
                     let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController

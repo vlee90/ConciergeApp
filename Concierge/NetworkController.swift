@@ -19,6 +19,8 @@ class NetworkController {
     var token: String?
     var numberOfJWTChecks = 0
     
+    var user : User?
+    
     init() {
         self.session = NSURLSession(configuration: self.configuration)
     }
@@ -86,9 +88,52 @@ class NetworkController {
         if error != nil {
             println(error?.localizedDescription)
         }
-//        let length = postData!.length
         request.HTTPMethod = "POST"
-//        request.setValue("\(length)", forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.HTTPBody = postData
+        if self.token != nil {
+            request.setValue(self.token!, forHTTPHeaderField: "jwt")
+        }
+        let dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (responseData, httpResponse, error) -> Void in
+            if error != nil {
+                println(error.description)
+            }
+            else {
+                if let response = httpResponse as? NSHTTPURLResponse {
+                    switch response.statusCode {
+                    case 200...299:
+                        println(response.statusCode)
+                        var err: NSError?
+                        var parsedData = NSJSONSerialization.JSONObjectWithData(responseData, options: nil, error: &err) as NSDictionary
+                        self.queue.addOperationWithBlock({ () -> Void in
+                            completionFunction(postResponse: parsedData, error: error)
+                        })
+                    default:
+                        println(response.statusCode)
+                    }
+                }
+            }
+        })
+        dataTask.resume()
+    }
+    
+    
+    func PUTrequest(endpoint: String, query: String?, dictionary: NSDictionary?, completionFunction: (postResponse: NSDictionary, error: NSError?) -> Void) -> Void {
+        var urlString = "\(self.protcol)" + "\(self.domain)" + "\(endpoint)"
+        let url = NSURL(string: urlString)
+        var request = NSMutableURLRequest(URL: url!)
+        var error: NSError?
+        var postData: NSData?
+        if dictionary != nil {
+            postData = NSJSONSerialization.dataWithJSONObject(dictionary!, options: nil, error: &error)
+        }
+        else {
+            postData = nil
+        }
+        if error != nil {
+            println(error?.localizedDescription)
+        }
+        request.HTTPMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData
         if self.token != nil {

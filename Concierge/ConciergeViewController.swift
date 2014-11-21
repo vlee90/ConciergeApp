@@ -13,6 +13,7 @@ class ConciergeViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var workButton: UIButton!
     var workBool: Bool = false
     var networkController = NetworkController.sharedInstance
+    var storageController = StorageController.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()

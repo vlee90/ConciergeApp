@@ -9,8 +9,8 @@
 import Foundation
 
 class Job {
-    var jobDate: String
-    var recurring: Bool
+    var jobDate: String?
+    var recurring: Bool?
     var _id: String?
     var parentNumber: String?
     var parent: String?

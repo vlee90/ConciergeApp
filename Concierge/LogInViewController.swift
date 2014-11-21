@@ -12,7 +12,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    var tabbarController = UITabBarController()
+    var tabbarController = TabBarController.sharedInstance
     var viewControllerArray: Array<UIViewController>!
     
     var networkController = NetworkController.sharedInstance
@@ -56,10 +56,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             self.viewControllerArray = [jobNavC, profileVC, conciegreVC, settingVC]
             self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
         }
-        else {
-            self.viewControllerArray = [jobNavC, profileVC, settingVC]
-            self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
-        }
+//        else {
+//            self.viewControllerArray = [jobNavC, profileVC, settingVC]
+//            self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
+//        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

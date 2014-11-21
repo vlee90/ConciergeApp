@@ -21,12 +21,22 @@ enum kViewControllerIdenifiers: String {
 enum kPOSTRoutes: String {
     case User = "/users"
     case Confirm = "/confirm"
-    case Concierge = "/concierge"
     case ConciergeAvailable = "/conciergeAvailable"
     case ConciergeUnavailable = "/conciergeUnavailable"
     case Jobs = "/jobs"
     case ResendConfirmation = "/resendConfirmation"
+    case ResetPassword = "/passwordReset"
+    case ConciergeToUser = "/conciergeToUser"
+    case UserToConcierge = "/concierge"
+}
+
+enum kGETRoutes: String {
     case UserInfo = "/userInfo"
+}
+
+enum kPUTRoutes: String {
+    case ChangePhone = "/changePhone"
+    case ChangeUsername = "/changeUsername"
 }
 
 enum kCellIdentifers: String {

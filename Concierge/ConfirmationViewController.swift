@@ -11,12 +11,11 @@ import UIKit
 class ConfirmationViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var confirmationTextField: UITextField!
-    var tabbarController = UITabBarController()
+    var tabbarController = TabBarController.sharedInstance
     var viewControllerArray: Array<UIViewController>!
     var networkController = NetworkController.sharedInstance
     var alertController = AlertController.sharedInstance
-    
-    var user: User?
+    var storageController = StorageController.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +38,9 @@ class ConfirmationViewController: UIViewController {
             else {
                 // ConfirmationCheck
                 // PostResponse is the entire userObject
-                self.setRemainingUserProperties(self.user!, postDictionary: postResponse)
-                if self.user!.confirmed == true {
-                    self.user!.confirmationCode = self.confirmationTextField.text
+                self.setRemainingUserProperties(self.storageController.user!, postDictionary: postResponse)
+                if self.storageController.user!.confirmed == true {
+                    self.storageController.user!.confirmationCode = self.confirmationTextField.text
                     self.presentViewController(self.tabbarController, animated: true, completion: nil)
                 }
                 else {
@@ -57,8 +56,15 @@ class ConfirmationViewController: UIViewController {
         var profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
         let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
         let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
+        
+        if self.storageController.user?.concierge == false {
             self.viewControllerArray = [jobNavC, profileVC, settingVC]
             self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
+        }
+        else {
+            self.viewControllerArray = [jobNavC, profileVC, conciegreVC, settingVC]
+            self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
+        }
     }
     
     func setRemainingUserProperties(user: User, postDictionary: NSDictionary) {

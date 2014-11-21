@@ -15,26 +15,31 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var changeInformationButton: UIButton!
     @IBOutlet weak var switchConciergeStatusButton: UIButton!
     
     var validationController = ValidationController.sharedInstance
     var alertController = AlertController.sharedInstance
     var networkController = NetworkController.sharedInstance
+    var storageController = StorageController.sharedInstance
     
     var changeMode: Bool = false
-    var userConciergeMode: Bool = true
+    var userConciergeMode: Bool = false
     var textFieldArray: [UITextField]!
     var viewControllerArray: [UIViewController]!
+    var tabbarController = TabBarController.sharedInstance
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if self.storageController.user != nil {
+            self.populateTextFields(self.storageController.user!)
+            self.userConciergeMode = self.storageController.user!.concierge
+        }
+        
         self.setTextFieldsEnabled(false)
-        self.passwordTextField.secureTextEntry = true
-        self.textFieldArray = [self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.phoneNumberTextField, self.passwordTextField]
+        self.textFieldArray = [self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.phoneNumberTextField]
         
         self.profileImageView.userInteractionEnabled = true
         let profileImagePress = UITapGestureRecognizer(target: self, action: "profileImagePressed:")
@@ -51,6 +56,18 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func resetPasswordButtonPressed(sender: UIButton) {
+        let postDict = ["username" : self.storageController.user!.username!]
+        self.networkController.POSTrequest(kPOSTRoutes.ResetPassword.rawValue, query: nil, dictionary: postDict, completionFunction: { (postResponse, error) -> Void in
+            if error != nil {
+                println("Error: POST /passwordReset: \(error?.description)")
+            }
+            else {
+                println(postResponse)
+            }
+        })
+    }
+    
     @IBAction func changeInformationButtonPressed(sender: UIButton) {
         if self.changeMode == false {
             self.changeInformationButton.backgroundColor = UIColor.redColor()
@@ -60,16 +77,71 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
             self.switchConciergeStatusButton.enabled = true
             self.changeMode = true
         } else {
-            //POST Save
             if self.validationController.checkForCompletelyFilledOutTextFields(self.textFieldArray) == true {
                 if self.validationController.validateEmail(self.emailTextField.text) == true && self.validationController.validatePhoneNumber(self.phoneNumberTextField.text) == true {
-                    self.changeInformationButton.backgroundColor = UIColor.greenColor()
-                    self.changeInformationButton.setTitle("Change Information", forState: UIControlState.Normal)
-                    self.changeInformationButton.titleLabel?.backgroundColor = UIColor.greenColor()
-                    self.setTextFieldsEnabled(false)
-                    self.switchConciergeStatusButton.enabled = false
-                    self.setViewControllersForTabBarController()
-                    self.changeMode = false
+                    //PUT USERNAME PUT PHONE
+                    let userNamePostDict = ["username" : self.emailTextField.text]
+                    let phonePostDict = ["phone" : self.phoneNumberTextField.text]
+                    self.networkController.PUTrequest(kPUTRoutes.ChangePhone.rawValue, query: nil, dictionary: phonePostDict, completionFunction: { (postResponse, error) -> Void in
+                        if error != nil {
+                            println("Error: PUT /changePhone: \(error?.description)")
+                        }
+                        else {
+                            println("Save new phoneNumber success")
+                            self.networkController.PUTrequest(kPUTRoutes.ChangeUsername.rawValue, query: nil, dictionary: userNamePostDict, completionFunction: { (postResponse, error) -> Void in
+                                if error != nil {
+                                    println("Error: PUT /changeUsername: \(error?.description)")
+                                }
+                                else {
+                                    println("Save new username/email success")
+                                    if self.userConciergeMode == true {
+                                        self.networkController.POSTrequest(kPOSTRoutes.UserToConcierge.rawValue, query: nil, dictionary: nil, completionFunction: { (postResponse, error) -> Void in
+                                            if error != nil {
+                                                println("Error on userToConcierge: \(error?.description)")
+                                            }
+                                            else {
+                                                self.storageController.user?.concierge = postResponse.objectForKey("concierge") as Bool
+                                                self.storageController.user?.username = self.emailTextField.text
+                                                self.storageController.user?.phone = self.phoneNumberTextField.text
+                                                self.populateTextFields(self.storageController.user!)
+                                                // Should move to Confirm view and reconfirm. Error occurs when this happens though
+                                                //                                    self.presentViewController(ConfirmationViewController(), animated: true, completion: nil)
+                                                self.changeInformationButton.backgroundColor = UIColor.greenColor()
+                                                self.changeInformationButton.setTitle("Change Information", forState: UIControlState.Normal)
+                                                self.changeInformationButton.titleLabel?.backgroundColor = UIColor.greenColor()
+                                                self.setTextFieldsEnabled(false)
+                                                self.switchConciergeStatusButton.enabled = false
+                                                self.setViewControllersForTabBarController()
+                                                self.changeMode = false
+                                            }
+                                        })
+                                    }
+                                    else {
+                                        self.networkController.POSTrequest(kPOSTRoutes.ConciergeToUser.rawValue, query: nil, dictionary: nil, completionFunction: { (postResponse, error) -> Void in
+                                            if error != nil {
+                                                println("Error on userToConcierge: \(error?.description)")
+                                            }
+                                            else {
+                                                self.storageController.user?.concierge = postResponse.objectForKey("concierge") as Bool
+                                                self.storageController.user?.username = self.emailTextField.text
+                                                self.storageController.user?.phone = self.phoneNumberTextField.text
+                                                self.populateTextFields(self.storageController.user!)
+                                                // Should move to Confirm view and reconfirm. Error occurs when this happens though
+                                                //                                    self.presentViewController(ConfirmationViewController(), animated: true, completion: nil)
+                                                self.changeInformationButton.backgroundColor = UIColor.greenColor()
+                                                self.changeInformationButton.setTitle("Change Information", forState: UIControlState.Normal)
+                                                self.changeInformationButton.titleLabel?.backgroundColor = UIColor.greenColor()
+                                                self.setTextFieldsEnabled(false)
+                                                self.switchConciergeStatusButton.enabled = false
+                                                self.setViewControllersForTabBarController()
+                                                self.changeMode = false
+                                            }
+                                        })
+                                    }
+                                }
+                            })
+                        }
+                    })
                 }
                 else {
                     let invalidEmailAlert = self.alertController.phoneAndEmailNotValid()
@@ -111,11 +183,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     }
     
     func setTextFieldsEnabled(enabled: Bool) {
-        self.firstNameTextField.enabled = enabled
-        self.lastNameTextField.enabled = enabled
+//        self.firstNameTextField.enabled = enabled
+//        self.lastNameTextField.enabled = enabled
         self.phoneNumberTextField.enabled = enabled
         self.emailTextField.enabled = enabled
-        self.passwordTextField.enabled = enabled
     }
     
     
@@ -126,13 +197,27 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
         let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
         if self.userConciergeMode == true {
             self.viewControllerArray = [conciegreVC, profileVC, jobNavC, settingVC]
-            self.tabBarController?.selectedIndex = 1
-            self.tabBarController?.setViewControllers(self.viewControllerArray, animated: true)
+            self.tabbarController.selectedIndex = 1
+            self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
         }
         else {
             self.viewControllerArray = [profileVC, jobNavC, settingVC]
-            self.tabBarController?.selectedIndex = 0
-            self.tabBarController?.setViewControllers(self.viewControllerArray, animated: true)
+            self.tabbarController.selectedIndex = 0
+            self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
         }
+    }
+    
+    func populateTextFields(user: User) {
+        self.firstNameTextField.text = user.first!
+        self.lastNameTextField.text = user.last!
+        self.phoneNumberTextField.text = user.phone!
+        self.emailTextField.text = user.username!
+        if self.storageController.user?.concierge == true {
+            self.switchConciergeStatusButton.setTitle("Concierge", forState: UIControlState.Normal)
+        }
+        else {
+            self.switchConciergeStatusButton.setTitle("Client", forState: UIControlState.Normal)
+        }
+        
     }
 }
