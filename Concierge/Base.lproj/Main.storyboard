@@ -483,7 +483,7 @@
                     <navigationItem key="navigationItem" id="F1u-49-Crn">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FOt-ET-Vxr">
                             <connections>
-                                <segue destination="MXw-DP-9dO" kind="presentation" id="mZd-Yc-4vN"/>
+                                <segue destination="MXw-DP-9dO" kind="show" id="mZd-Yc-4vN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

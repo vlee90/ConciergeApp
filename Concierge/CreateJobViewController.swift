@@ -28,7 +28,8 @@ class CreateJobViewController: UIViewController {
         super.viewDidLoad()
         println(self.datePicker.date)
         self.dateFormatter.dateFormat = self.dateFormat
-        //        self.view.backgroundColor = tColor1
+        self.dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
+//                self.view.backgroundColor = tColor1
     }
     
     @IBAction func createJobButtonPressed(sender: UIButton) {
@@ -44,30 +45,31 @@ class CreateJobViewController: UIViewController {
                     println("createJobButtonPressed Error: \(error?.description)")
                 }
                 else {
-                    let responseDate = postResponse.objectForKey("jobDate") as String
-                    let responseID = postResponse.objectForKey("_id") as String
-                    let responseOptions = postResponse.objectForKey("optionsList") as NSArray
-                    let responseParent = postResponse.objectForKey("parent") as String
-                    let responseRecurring = postResponse.objectForKey("recurring") as Bool
-                    let responseParentNumber = postResponse.objectForKey("parentNumber") as String
-                    let responseNameDict = postResponse.objectForKey("parentName") as NSDictionary
-                    let responseFirst = responseNameDict.objectForKey("first") as String
-                    let responseLast = responseNameDict.objectForKey("last") as String
-                    var newJob = Job(jobDate: responseDate, recurring: responseRecurring)
-                    newJob._id = responseID
-                    newJob.optionsList = responseOptions
-                    newJob.parent = responseParent
-                    newJob.parentNumber = responseParentNumber
-                    newJob.first = responseFirst
-                    newJob.last = responseLast
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    var newJob = Job()
+                    self.populateJobProperties(newJob, info: postResponse)
+                    self.navigationController?.popViewControllerAnimated(true)
                 }
             })
         }
 
     }
-//    @IBAction func recurringSwtiched(sender: UISwitch) {
-//    }
-//    @IBAction func weatherSwitched(sender: UISwitch) {
-//    }
+    
+    func populateJobProperties(newJob: Job, info: NSDictionary) {
+        let responseDate = info.objectForKey("jobDate") as String
+        let responseID = info.objectForKey("_id") as String
+        let responseOptions = info.objectForKey("optionsList") as NSArray
+        let responseParent = info.objectForKey("parent") as String
+        let responseRecurring = info.objectForKey("recurring") as Bool
+        let responseParentNumber = info.objectForKey("parentNumber") as String
+        let responseNameDict = info.objectForKey("parentName") as NSDictionary
+        let responseFirst = responseNameDict.objectForKey("first") as String
+        let responseLast = responseNameDict.objectForKey("last") as String
+        var newJob = Job(jobDate: responseDate, recurring: responseRecurring)
+        newJob._id = responseID
+        newJob.optionsList = responseOptions
+        newJob.parent = responseParent
+        newJob.parentNumber = responseParentNumber
+        newJob.first = responseFirst
+        newJob.last = responseLast
+    }
 }

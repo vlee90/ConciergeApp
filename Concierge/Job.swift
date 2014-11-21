@@ -18,6 +18,11 @@ class Job {
     var first: String?
     var last: String?
     
+    init() {
+        
+    }
+    
+    
     init(jobDate: String, recurring: Bool) {
         self.jobDate = jobDate
         self.recurring = recurring

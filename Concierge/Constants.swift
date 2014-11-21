@@ -26,6 +26,7 @@ enum kPOSTRoutes: String {
     case ConciergeUnavailable = "/conciergeUnavailable"
     case Jobs = "/jobs"
     case ResendConfirmation = "/resendConfirmation"
+    case UserInfo = "/userInfo"
 }
 
 enum kCellIdentifers: String {

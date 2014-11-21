@@ -9,11 +9,11 @@
 import UIKit
 
 class User {
-    var username: String!
-    var password: String!
-    var phone: String!
-    var first: String!
-    var last: String!
+    var username: String?
+    var password: String?
+    var phone: String?
+    var first: String?
+    var last: String?
     var profileImage: UIImage?
     
     var concierge: Bool = false
@@ -24,6 +24,9 @@ class User {
     var id: String?
     var confirmationCode: String?
     
+    init() {
+        
+    }
     
     init(username: String, password: String, phone: String, first: String, last: String, jwtToken: String) {
         self.username = username

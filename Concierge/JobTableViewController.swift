@@ -13,6 +13,7 @@ class JobTableViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var tabbarcontroller = UITabBarController()
     var networkController = NetworkController.sharedInstance
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +36,14 @@ class JobTableViewController: UIViewController, UITableViewDataSource, UITableVi
         if let token = NSUserDefaults.standardUserDefaults().valueForKey(kTokenKey) as? String {
             //  TRUE: Check if token matches token in database.
             self.networkController.token = token
-            self.networkController.GETrequest(kPOSTRoutes.Concierge.rawValue, query: nil, completionFunction: { (info, error) -> Void in
+            self.networkController.GETrequest(kPOSTRoutes.UserInfo.rawValue, query: nil, completionFunction: { (info, error) -> Void in
                 if error != nil {
                     println(error!.description)
                 }
                 else {
+                    self.user = User()
+                    self.populateUserInformation(self.user!, info: info)
+                    self.user?.jwtToken = token
                     let conciegreVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConciergeNavCrtl.rawValue) as UINavigationController
                     var profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
                     let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
@@ -80,6 +84,21 @@ class JobTableViewController: UIViewController, UITableViewDataSource, UITableVi
         let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobDetailVC.rawValue) as JobDetailViewController
         self.navigationController?.pushViewController(toVC, animated: true)
     }
+    
+    func populateUserInformation(user: User, info: NSDictionary) {
+        user.id = info.objectForKey("_id") as? String
+        user.confirmationCode = info.objectForKey("confirmationCode") as? String
+        user.username = info.objectForKey("username") as? String
+        user.phone = info.objectForKey("phone") as? String
+        user.confirmed = info.objectForKey("confirmed") as Bool
+        user.concierge = info.objectForKey("concierge") as Bool
+        user.jobs = info.objectForKey("jobs") as? Array
+        user.conciergeJobs = info.objectForKey("conciergeJobs") as? Array
+        let nameDict = info.objectForKey("name") as NSDictionary
+        user.first = nameDict.objectForKey("first") as? String
+        user.last = nameDict.objectForKey("last") as? String
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
