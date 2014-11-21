@@ -32,6 +32,7 @@ enum kPOSTRoutes: String {
 
 enum kGETRoutes: String {
     case UserInfo = "/userInfo"
+    case ConciergeJobs = "/conciergeJobs"
 }
 
 enum kPUTRoutes: String {
