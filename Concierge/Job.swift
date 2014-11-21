@@ -9,13 +9,17 @@
 import Foundation
 
 class Job {
-    var type: String?
-    var time: NSDate?
-    var location: String?
-    var recurring: Bool?
+    var jobDate: String
+    var recurring: Bool
+    var _id: String?
+    var parentNumber: String?
+    var parent: String?
+    var optionsList: NSArray?
+    var first: String?
+    var last: String?
     
-    init(time: NSDate, recurring: Bool) {
-        self.time = time
+    init(jobDate: String, recurring: Bool) {
+        self.jobDate = jobDate
         self.recurring = recurring
     }
 }

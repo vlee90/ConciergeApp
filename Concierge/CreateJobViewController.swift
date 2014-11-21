@@ -19,47 +19,49 @@ class CreateJobViewController: UIViewController {
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var recurringLabel: UILabel!
     
-    var date: NSDate?
-    var type: String?
-    var location: String?
-    var recurringBool: Bool!
     var dateFormatter = NSDateFormatter()
+    let dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+    
+    var networkController = NetworkController.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         println(self.datePicker.date)
-        dateFormatter.set
+        self.dateFormatter.dateFormat = self.dateFormat
         //        self.view.backgroundColor = tColor1
     }
     
     @IBAction func createJobButtonPressed(sender: UIButton) {
-//        if self.date != nil {
-//            var newJob = Job(time: self.date!, recurring: self.recurringBool)
-//            //POST JOB
-//        }
-        println(self.datePicker.date)
-        println(self.recurringSwitch.on)
-    }
-    
-    
-//    POST /jobs
-//    (input JWT header and..)
-//    {
-//    "jobDate": "2014-12-12T01:32:21.196Z",
-//    "recurring": "true"
-//    }
-//    "jobDate": "2014-11-22 05:00:13 +0000"
+        if self.datePicker?.date != nil {
+            //POST JOB
+            let selectedDate = self.datePicker.date
+            let formatedDate = self.dateFormatter.stringFromDate(selectedDate)
+            let postDict = ["jobDate" : "\(formatedDate)", "recurring" : self.recurringSwitch.on]
+            self.networkController.POSTrequest(kPOSTRoutes.Jobs.rawValue, query: nil, dictionary: postDict, completionFunction: { (postResponse, error) -> Void in
+                if error != nil {
+                    println("createJobButtonPressed Error: \(error?.description)")
+                }
+                else {
+                    let responseDate = postResponse.objectForKey("jobDate") as String
+                    let responseID = postResponse.objectForKey("_id") as String
+                    let responseOptions = postResponse.objectForKey("optionsList") as NSArray
+                    let responseParent = postResponse.objectForKey("parent") as String
+                    let responseRecurring = postResponse.objectForKey("recurring") as Bool
+                    let responseParentNumber = postResponse.objectForKey("parentNumber") as String
+                    let responseNameDict = postResponse.objectForKey("parentName") as NSDictionary
+                    let responseFirst = responseNameDict.objectForKey("first") as String
+                    let responseLast = responseNameDict.objectForKey("last") as String
+                    var newJob = Job(jobDate: responseDate, recurring: responseRecurring)
+                    newJob._id = responseID
+                    newJob.optionsList = responseOptions
+                    newJob.parent = responseParent
+                    newJob.parentNumber = responseParentNumber
+                    newJob.first = responseFirst
+                    newJob.last = responseLast
+                }
+            })
+        }
 
-    
-
-    
-    func timeChanged(action: UIControlEvents) {
-        println(self.datePicker.date)
-    }
-    
-    func recurringSwitched(action: UIControlEvents) {
-        println(self.recurringSwitch.on)
-        
     }
 //    @IBAction func recurringSwtiched(sender: UISwitch) {
 //    }
