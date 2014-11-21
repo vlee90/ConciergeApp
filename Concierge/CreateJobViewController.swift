@@ -20,7 +20,7 @@ class CreateJobViewController: UIViewController {
     @IBOutlet weak var recurringLabel: UILabel!
     
     var dateFormatter = NSDateFormatter()
-    let dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+    let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
     
     var networkController = NetworkController.sharedInstance
     
@@ -34,8 +34,10 @@ class CreateJobViewController: UIViewController {
     @IBAction func createJobButtonPressed(sender: UIButton) {
         if self.datePicker?.date != nil {
             //POST JOB
+            println(self.datePicker?.date)
             let selectedDate = self.datePicker.date
             let formatedDate = self.dateFormatter.stringFromDate(selectedDate)
+            println(formatedDate)
             let postDict = ["jobDate" : "\(formatedDate)", "recurring" : self.recurringSwitch.on]
             self.networkController.POSTrequest(kPOSTRoutes.Jobs.rawValue, query: nil, dictionary: postDict, completionFunction: { (postResponse, error) -> Void in
                 if error != nil {
@@ -58,6 +60,7 @@ class CreateJobViewController: UIViewController {
                     newJob.parentNumber = responseParentNumber
                     newJob.first = responseFirst
                     newJob.last = responseLast
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 }
             })
         }

@@ -57,14 +57,8 @@ class ConfirmationViewController: UIViewController {
         var profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
         let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
         let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
-//        if true {
-//            self.viewControllerArray = [conciegreVC, profileVC, jobNavC, settingVC]
-//            self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
-//        }
-//        else {
-            self.viewControllerArray = [profileVC, jobNavC, settingVC]
+            self.viewControllerArray = [jobNavC, profileVC, settingVC]
             self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
-//        }
     }
     
     func setRemainingUserProperties(user: User, postDictionary: NSDictionary) {
