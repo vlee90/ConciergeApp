@@ -10,8 +10,8 @@ import UIKit
 
 class StorageController {
     
-    var user: User?
-    
+    var user = User()
+    var dateFormatter = NSDateFormatter()
     
     class var sharedInstance : StorageController {
         struct Static {

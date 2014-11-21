@@ -19,16 +19,17 @@ class CreateJobViewController: UIViewController {
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var recurringLabel: UILabel!
     
-    var dateFormatter = NSDateFormatter()
+    
     let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
     
+    var storageController = StorageController.sharedInstance
     var networkController = NetworkController.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         println(self.datePicker.date)
-        self.dateFormatter.dateFormat = self.dateFormat
-        self.dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
+        self.storageController.dateFormatter.dateFormat = self.dateFormat
+        self.storageController.dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
 //                self.view.backgroundColor = tColor1
     }
     
@@ -37,7 +38,7 @@ class CreateJobViewController: UIViewController {
             //POST JOB
             println(self.datePicker?.date)
             let selectedDate = self.datePicker.date
-            let formatedDate = self.dateFormatter.stringFromDate(selectedDate)
+            let formatedDate = self.storageController.dateFormatter.stringFromDate(selectedDate)
             println(formatedDate)
             let postDict = ["jobDate" : "\(formatedDate)", "recurring" : self.recurringSwitch.on]
             self.networkController.POSTrequest(kPOSTRoutes.Jobs.rawValue, query: nil, dictionary: postDict, completionFunction: { (postResponse, error) -> Void in

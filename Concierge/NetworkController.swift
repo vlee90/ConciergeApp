@@ -10,16 +10,15 @@ import Foundation
 
 class NetworkController {
     let protcol: String = "https://"
-    let domain: String = "quiet-dusk-4540.herokuapp.com"
+    let domain: String = "salty-earth-1782.herokuapp.com"
 
     var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
     var session: NSURLSession
     var queue = NSOperationQueue.mainQueue()
     
-    var token: String?
     var numberOfJWTChecks = 0
     
-    var user : User?
+    var storageController = StorageController.sharedInstance
     
     init() {
         self.session = NSURLSession(configuration: self.configuration)
@@ -36,7 +35,7 @@ class NetworkController {
         return Static.instance!
     }
     
-    func GETrequest(endpoint: String, query: String?, completionFunction: (info: NSDictionary, error: NSError?) -> Void) {
+    func GETrequest(endpoint: String, query: String?, completionFunction: (info: AnyObject, error: NSError?) -> Void) {
         var urlString = "\(self.protcol)" + "\(self.domain)" + "\(endpoint)"
         if query != nil {
             urlString += "?\(query!)"
@@ -46,8 +45,8 @@ class NetworkController {
         request.HTTPMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        if self.token != nil {
-            request.setValue(self.token!, forHTTPHeaderField: "jwt")
+        if self.storageController.user.jwtToken != nil {
+            request.setValue(self.storageController.user.jwtToken!, forHTTPHeaderField: "jwt")
         }
         var dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (data, httpResponse, error) -> Void in
             if error != nil {
@@ -62,6 +61,14 @@ class NetworkController {
                             self.queue.addOperationWithBlock({ () -> Void in
                                 completionFunction(info: dictionary, error: error)
                             })
+                        }
+                        if let array = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &err) as? NSArray {
+                            self.queue.addOperationWithBlock({ () -> Void in
+                                completionFunction(info: array, error: error)
+                            })
+                        }
+                        else {
+                            println("Error on GET: Return Object is not an NSArray or NSDictionary")
                         }
                     default:
                         println(response.statusCode)
@@ -91,8 +98,8 @@ class NetworkController {
         request.HTTPMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData
-        if self.token != nil {
-            request.setValue(self.token!, forHTTPHeaderField: "jwt")
+        if self.storageController.user.jwtToken != nil {
+            request.setValue(self.storageController.user.jwtToken!, forHTTPHeaderField: "jwt")
         }
         let dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (responseData, httpResponse, error) -> Void in
             if error != nil {
@@ -136,8 +143,8 @@ class NetworkController {
         request.HTTPMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData
-        if self.token != nil {
-            request.setValue(self.token!, forHTTPHeaderField: "jwt")
+        if self.storageController.user.jwtToken != nil {
+            request.setValue(self.storageController.user.jwtToken!, forHTTPHeaderField: "jwt")
         }
         let dataTask = self.session.dataTaskWithRequest(request, completionHandler: { (responseData, httpResponse, error) -> Void in
             if error != nil {

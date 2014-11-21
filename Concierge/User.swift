@@ -19,8 +19,8 @@ class User {
     var concierge: Bool = false
     var confirmed: Bool = false
     var jwtToken: String?
-    var jobs: Array<Job>?
-    var conciergeJobs: Array<Job>?
+    var jobs: NSArray?
+    var conciergeJobs: NSArray?
     var id: String?
     var confirmationCode: String?
     

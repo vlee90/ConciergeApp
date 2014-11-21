@@ -11,6 +11,8 @@ import UIKit
 class ConfirmationViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var confirmationTextField: UITextField!
+    @IBOutlet weak var directionLabel: UILabel!
+    
     var tabbarController = TabBarController.sharedInstance
     var viewControllerArray: Array<UIViewController>!
     var networkController = NetworkController.sharedInstance
@@ -21,6 +23,7 @@ class ConfirmationViewController: UIViewController {
         super.viewDidLoad()
         self.setViewControllersForTabBarController()
         self.view.backgroundColor = tColor1
+        self.directionLabel.textColor = tColor5
         self.confirmationTextField.keyboardType = UIKeyboardType.NumberPad
     }
 
@@ -38,9 +41,9 @@ class ConfirmationViewController: UIViewController {
             else {
                 // ConfirmationCheck
                 // PostResponse is the entire userObject
-                self.setRemainingUserProperties(self.storageController.user!, postDictionary: postResponse)
-                if self.storageController.user!.confirmed == true {
-                    self.storageController.user!.confirmationCode = self.confirmationTextField.text
+                self.setRemainingUserProperties(self.storageController.user, postDictionary: postResponse)
+                if self.storageController.user.confirmed == true {
+                    self.storageController.user.confirmationCode = self.confirmationTextField.text
                     self.presentViewController(self.tabbarController, animated: true, completion: nil)
                 }
                 else {
@@ -57,7 +60,7 @@ class ConfirmationViewController: UIViewController {
         let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
         let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
         
-        if self.storageController.user?.concierge == false {
+        if self.storageController.user.concierge == false {
             self.viewControllerArray = [jobNavC, profileVC, settingVC]
             self.tabbarController.setViewControllers(self.viewControllerArray, animated: true)
         }
@@ -70,8 +73,8 @@ class ConfirmationViewController: UIViewController {
     func setRemainingUserProperties(user: User, postDictionary: NSDictionary) {
         user.id = postDictionary.valueForKey("_id") as? String
         user.confirmed = postDictionary.valueForKey("confirmed") as Bool
-        user.jobs = postDictionary.valueForKey("jobs") as? Array
-        user.conciergeJobs = postDictionary.valueForKey("conciergeJobs") as? Array
+        user.jobs = postDictionary.valueForKey("jobs") as? NSArray
+        user.conciergeJobs = postDictionary.valueForKey("conciergeJobs") as? NSArray
         
     }
 }

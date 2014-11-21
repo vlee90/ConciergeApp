@@ -33,6 +33,7 @@ enum kPOSTRoutes: String {
 enum kGETRoutes: String {
     case UserInfo = "/userInfo"
     case ConciergeJobs = "/conciergeJobs"
+    case Jobs = "/jobs"
 }
 
 enum kPUTRoutes: String {
@@ -42,10 +43,12 @@ enum kPUTRoutes: String {
 
 enum kCellIdentifers: String {
     case Gallery = "GALLERY_CELL"
+    case Job = "JOB_CELL"
 }
 
 enum knibNames: String {
     case GalleryCell = "GalleryCollectionViewCell"
+    case JobCell = "JobTableViewCell"
 }
 
 let kTokenKey = "tokenKey"

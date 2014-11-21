@@ -10,6 +10,8 @@
 		EB00C63C1A1C14D900F02C6E /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00C63B1A1C14D900F02C6E /* GalleryCollectionViewCell.swift */; };
 		EB00C63E1A1C150500F02C6E /* GalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB00C63D1A1C150500F02C6E /* GalleryCollectionViewCell.xib */; };
 		EB00C6401A1C255100F02C6E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00C63F1A1C255100F02C6E /* Protocols.swift */; };
+		EB09C3531A1FA48A00B9B7BD /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB09C3511A1FA48A00B9B7BD /* JobTableViewCell.swift */; };
+		EB09C3541A1FA48A00B9B7BD /* JobTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB09C3521A1FA48A00B9B7BD /* JobTableViewCell.xib */; };
 		EB2209CE1A1BCA5E0085D372 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2209CD1A1BCA5E0085D372 /* AlertController.swift */; };
 		EB2209D01A1BE1110085D372 /* CreateJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2209CF1A1BE1110085D372 /* CreateJobViewController.swift */; };
 		EBAB58101A1BFF550066E898 /* ValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAB580F1A1BFF550066E898 /* ValidationController.swift */; };
@@ -55,6 +57,8 @@
 		EB00C63B1A1C14D900F02C6E /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB00C63D1A1C150500F02C6E /* GalleryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryCollectionViewCell.xib; sourceTree = "<group>"; };
 		EB00C63F1A1C255100F02C6E /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		EB09C3511A1FA48A00B9B7BD /* JobTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		EB09C3521A1FA48A00B9B7BD /* JobTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobTableViewCell.xib; sourceTree = "<group>"; };
 		EB2209CD1A1BCA5E0085D372 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		EB2209CF1A1BE1110085D372 /* CreateJobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateJobViewController.swift; sourceTree = "<group>"; };
 		EBAB580F1A1BFF550066E898 /* ValidationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationController.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 			children = (
 				EBDDD4A81A199B3800DFEED9 /* Main.storyboard */,
 				EB00C63D1A1C150500F02C6E /* GalleryCollectionViewCell.xib */,
+				EB09C3521A1FA48A00B9B7BD /* JobTableViewCell.xib */,
 				EBDDD4AD1A199B3800DFEED9 /* LaunchScreen.xib */,
 			);
 			name = View;
@@ -275,6 +280,7 @@
 				EBDDD4DC1A1A81AD00DFEED9 /* JobTableViewController.swift */,
 				EBDDD4DE1A1A81BE00DFEED9 /* JobDetailViewController.swift */,
 				EB2209CF1A1BE1110085D372 /* CreateJobViewController.swift */,
+				EB09C3511A1FA48A00B9B7BD /* JobTableViewCell.swift */,
 			);
 			name = Jobs;
 			sourceTree = "<group>";
@@ -362,6 +368,7 @@
 				EBDDD4D11A19A37D00DFEED9 /* Email.png in Resources */,
 				EBDDD4AA1A199B3800DFEED9 /* Main.storyboard in Resources */,
 				EBDDD4AF1A199B3800DFEED9 /* LaunchScreen.xib in Resources */,
+				EB09C3541A1FA48A00B9B7BD /* JobTableViewCell.xib in Resources */,
 				EBDDD4D01A19A37D00DFEED9 /* User.png in Resources */,
 				EBDDD4CF1A19A37D00DFEED9 /* Password.png in Resources */,
 				EB00C63E1A1C150500F02C6E /* GalleryCollectionViewCell.xib in Resources */,
@@ -392,6 +399,7 @@
 				EBAB58121A1C12650066E898 /* PhotoFrameworkViewController.swift in Sources */,
 				EBDDD5211A1AA7ED00DFEED9 /* ConciergeJobDetailViewController.swift in Sources */,
 				EBDDD4D71A19E1A300DFEED9 /* ProfileViewController.swift in Sources */,
+				EB09C3531A1FA48A00B9B7BD /* JobTableViewCell.swift in Sources */,
 				EBDDD4D91A1A815E00DFEED9 /* LogInViewController.swift in Sources */,
 				EBDDD4DF1A1A81BE00DFEED9 /* JobDetailViewController.swift in Sources */,
 				EBD2B74F1A1EDE15005F3726 /* StorageController.swift in Sources */,

@@ -11,6 +11,8 @@ import UIKit
 class JobTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
+    let dateFormat = "yyyy/MM/dd HH:mm"
+    
     var tabbarcontroller = TabBarController.sharedInstance
     var networkController = NetworkController.sharedInstance
     var storageController = StorageController.sharedInstance
@@ -19,16 +21,19 @@ class JobTableViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.registerNib(UINib(nibName: knibNames.JobCell.rawValue, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: kCellIdentifers.Job.rawValue)
+        
+//        self.storageController.dateFormatter.dateFormat = self.dateFormat
         
         self.view.backgroundColor = tColor1
     }
     
     
     override func viewDidAppear(animated: Bool) {
-        // Used so profileView doesn't continuatelly reload itself.
         if self.networkController.numberOfJWTChecks == 0 {
             self.checkForJWT()
         }
+        self.tableView.reloadData()
     }
     
     
@@ -37,31 +42,33 @@ class JobTableViewController: UIViewController, UITableViewDataSource, UITableVi
         //  Checks if token is saved in user default
         if let token = NSUserDefaults.standardUserDefaults().valueForKey(kTokenKey) as? String {
             //  TRUE: Check if token matches token in database.
-            self.networkController.token = token
+            self.storageController.user.jwtToken = token
             self.networkController.GETrequest(kGETRoutes.UserInfo.rawValue, query: nil, completionFunction: { (info, error) -> Void in
                 if error != nil {
                     println(error!.description)
                 }
                 else {
-                    self.storageController.user = User()
-                    self.populateUserInformation(self.storageController.user!, info: info)
-                    self.storageController.user?.jwtToken = token
-                    self.storageController.user = self.storageController.user!
-                    let conciegreVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConciergeNavCrtl.rawValue) as UINavigationController
-                    var profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
-                    let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
-                    let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
-                    var concierge = info.objectForKey("concierge") as Bool
-                    if concierge == true {
-                        let viewControllerArray = [jobNavC, profileVC, conciegreVC, settingVC]
-                        self.tabbarcontroller.setViewControllers(viewControllerArray, animated: false)
-                        self.presentViewController(self.tabbarcontroller, animated: false, completion: nil)
-                    }
-                    else {
-                        let viewControllerArray = [jobNavC, profileVC, settingVC]
-                        self.tabbarcontroller
-                            .setViewControllers(viewControllerArray, animated: false)
-                        self.presentViewController(self.tabbarcontroller, animated: false, completion: nil)
+                    if let dict = info as? NSDictionary {
+                        self.populateUserInformation(self.storageController.user, info: dict)
+                        self.storageController.user.jwtToken = token
+                        self.storageController.user = self.storageController.user
+                        let conciegreVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConciergeNavCrtl.rawValue) as UINavigationController
+                        var profileVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ProfileVC.rawValue) as ProfileViewController
+                        let jobNavC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.JobNavCrtl.rawValue) as UINavigationController
+                        let settingVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.SettingVC.rawValue) as SettingsViewController
+                        var concierge = info.objectForKey("concierge") as Bool
+                        if concierge == true {
+                            let viewControllerArray = [jobNavC, profileVC, conciegreVC, settingVC]
+                            self.tabbarcontroller.setViewControllers(viewControllerArray, animated: false)
+                            self.presentViewController(self.tabbarcontroller, animated: false, completion: nil)
+                        }
+                        else {
+                            let viewControllerArray = [jobNavC, profileVC, settingVC]
+                            self.tabbarcontroller
+                                .setViewControllers(viewControllerArray, animated: false)
+                            self.presentViewController(self.tabbarcontroller, animated: false, completion: nil)
+                        }
+
                     }
                 }
             })
@@ -74,13 +81,39 @@ class JobTableViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel.text = "TEST Job"
+        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifers.Job.rawValue) as JobTableViewCell
+        if self.storageController.user.jwtToken != nil {
+            self.networkController.GETrequest(kGETRoutes.Jobs.rawValue, query: nil, completionFunction: { (info, error) -> Void in
+                
+                if error != nil {
+                    println("Error: GET /jobs: \(error?.description)")
+                }
+                else {
+                    if let array = info as? NSArray {
+                        cell.dateLabel.text = array[indexPath.row].objectForKey("jobDate") as? String
+                        if array[indexPath.row].objectForKey("recurring") as Bool == true {
+                            cell.recurringLabel.text = "Recurring"
+                        }
+                        else if array[indexPath.row].objectForKey("recurring") as Bool == false {
+                            cell.recurringLabel.text = "Non-Recurring"
+                        }
+                        else {
+                            cell.recurringLabel.text = "recurring = nil: Error!"
+                        }
+                    }
+                }
+            })
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        if self.storageController.user.jobs != nil {
+            return self.storageController.user.jobs!.count
+        }
+        else {
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -95,8 +128,8 @@ class JobTableViewController: UIViewController, UITableViewDataSource, UITableVi
         user.phone = info.objectForKey("phone") as? String
         user.confirmed = info.objectForKey("confirmed") as Bool
         user.concierge = info.objectForKey("concierge") as Bool
-        user.jobs = info.objectForKey("jobs") as? Array
-        user.conciergeJobs = info.objectForKey("conciergeJobs") as? Array
+        user.jobs = info.objectForKey("jobs") as? NSArray
+        user.conciergeJobs = info.objectForKey("conciergeJobs") as? NSArray
         let nameDict = info.objectForKey("name") as NSDictionary
         user.first = nameDict.objectForKey("first") as? String
         user.last = nameDict.objectForKey("last") as? String

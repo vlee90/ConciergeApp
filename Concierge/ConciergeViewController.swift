@@ -12,12 +12,12 @@ class ConciergeViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var workButton: UIButton!
     var workBool: Bool = false
+    var timer: NSTimer!
     var networkController = NetworkController.sharedInstance
     var storageController = StorageController.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "lookForJob", userInfo: nil, repeats: true)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.workButton.setTitle("Work", forState: UIControlState.Normal)
@@ -27,13 +27,14 @@ class ConciergeViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func lookForJob() {
+        println("Fired look for Job function")
         self.networkController.GETrequest(kGETRoutes.ConciergeJobs.rawValue, query: nil) { (info, error) -> Void in
             if error != nil {
                 println("Error in GET: /conciergeJobs: \(error?.description)")
             }
             else {
                 let jobsArray = info.objectForKey("conciergeJobs") as NSArray
-                self.storageController.user?.conciergeJobs = jobsArray
+                self.storageController.user.conciergeJobs = jobsArray
                 self.tableView.reloadData()
             }
         }
@@ -46,6 +47,7 @@ class ConciergeViewController: UIViewController, UITableViewDataSource, UITableV
                     println(error!.description)
                 }
                 else {
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "lookForJob", userInfo: nil, repeats: true)
                     self.workButton.backgroundColor = UIColor.redColor()
                     self.workButton.setTitle("Stop", forState: UIControlState.Normal)
                     self.workButton.titleLabel?.backgroundColor = UIColor.redColor()
@@ -58,6 +60,7 @@ class ConciergeViewController: UIViewController, UITableViewDataSource, UITableV
                     println(error!.description)
                 }
                 else {
+                    self.timer.invalidate()
                     self.workButton.backgroundColor = UIColor.greenColor()
                     self.workButton.setTitle("Work", forState: UIControlState.Normal)
                     self.workButton.titleLabel?.backgroundColor = UIColor.greenColor()
@@ -73,8 +76,8 @@ class ConciergeViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.storageController.user?.conciergeJobs != nil {
-            return self.storageController.user!.conciergeJobs!.count
+        if self.storageController.user.conciergeJobs != nil {
+            return self.storageController.user.conciergeJobs!.count
         }
         else {
             return 0

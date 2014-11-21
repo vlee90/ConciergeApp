@@ -33,10 +33,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.storageController.user != nil {
-            self.populateTextFields(self.storageController.user!)
-            self.userConciergeMode = self.storageController.user!.concierge
-        }
+        self.populateTextFields(self.storageController.user)
+        self.userConciergeMode = self.storageController.user.concierge
         
         self.setTextFieldsEnabled(false)
         self.textFieldArray = [self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.phoneNumberTextField]
@@ -57,7 +55,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     }
     
     @IBAction func resetPasswordButtonPressed(sender: UIButton) {
-        let postDict = ["username" : self.storageController.user!.username!]
+        let postDict = ["username" : self.storageController.user.username!]
         self.networkController.POSTrequest(kPOSTRoutes.ResetPassword.rawValue, query: nil, dictionary: postDict, completionFunction: { (postResponse, error) -> Void in
             if error != nil {
                 println("Error: POST /passwordReset: \(error?.description)")
@@ -100,10 +98,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
                                                 println("Error on userToConcierge: \(error?.description)")
                                             }
                                             else {
-                                                self.storageController.user?.concierge = postResponse.objectForKey("concierge") as Bool
-                                                self.storageController.user?.username = self.emailTextField.text
-                                                self.storageController.user?.phone = self.phoneNumberTextField.text
-                                                self.populateTextFields(self.storageController.user!)
+                                                self.storageController.user.concierge = postResponse.objectForKey("concierge") as Bool
+                                                self.storageController.user.username = self.emailTextField.text
+                                                self.storageController.user.phone = self.phoneNumberTextField.text
+                                                self.populateTextFields(self.storageController.user)
                                                 // Should move to Confirm view and reconfirm. Error occurs when this happens though
                                                 //                                    self.presentViewController(ConfirmationViewController(), animated: true, completion: nil)
                                                 self.changeInformationButton.backgroundColor = UIColor.greenColor()
@@ -122,10 +120,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
                                                 println("Error on userToConcierge: \(error?.description)")
                                             }
                                             else {
-                                                self.storageController.user?.concierge = postResponse.objectForKey("concierge") as Bool
-                                                self.storageController.user?.username = self.emailTextField.text
-                                                self.storageController.user?.phone = self.phoneNumberTextField.text
-                                                self.populateTextFields(self.storageController.user!)
+                                                self.storageController.user.concierge = postResponse.objectForKey("concierge") as Bool
+                                                self.storageController.user.username = self.emailTextField.text
+                                                self.storageController.user.phone = self.phoneNumberTextField.text
+                                                self.populateTextFields(self.storageController.user)
                                                 // Should move to Confirm view and reconfirm. Error occurs when this happens though
                                                 //                                    self.presentViewController(ConfirmationViewController(), animated: true, completion: nil)
                                                 self.changeInformationButton.backgroundColor = UIColor.greenColor()
@@ -206,16 +204,23 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, ImageDelegat
     }
     
     func populateTextFields(user: User) {
-        self.firstNameTextField.text = user.first!
-        self.lastNameTextField.text = user.last!
-        self.phoneNumberTextField.text = user.phone!
-        self.emailTextField.text = user.username!
-        if self.storageController.user?.concierge == true {
+        if user.first != nil {
+            self.firstNameTextField.text = user.first!
+        }
+        if user.last != nil {
+            self.lastNameTextField.text = user.last!
+        }
+        if user.phone != nil {
+            self.phoneNumberTextField.text = user.phone!
+        }
+        if user.username != nil {
+            self.emailTextField.text = user.username!
+        }
+        if self.storageController.user.concierge == true {
             self.switchConciergeStatusButton.setTitle("Concierge", forState: UIControlState.Normal)
         }
-        else {
+        else if self.storageController.user.concierge == false {
             self.switchConciergeStatusButton.setTitle("Client", forState: UIControlState.Normal)
         }
-        
     }
 }

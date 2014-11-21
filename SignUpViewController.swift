@@ -30,6 +30,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     var networkController = NetworkController.sharedInstance
     var alertController = AlertController.sharedInstance
     var validationController = ValidationController.sharedInstance
+    var storageController = StorageController.sharedInstance
     
     var textFieldArray: [UITextField]!
     
@@ -94,8 +95,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                             let token = postResponse.objectForKey("jwt") as String
                             NSUserDefaults.standardUserDefaults().setObject(token, forKey: kTokenKey)
                             NSUserDefaults.standardUserDefaults().synchronize()
-                            self.networkController.token = token
+                            self.storageController.user.jwtToken = token
                             var user = User(username: self.emailTextField.text, password: self.passwordTextField.text, phone: self.phoneNumberTextField.text, first: self.firstNameTextField.text, last: self.lastNameTextField.text, jwtToken: token)
+                            self.storageController.user = user
                             let toVC = self.storyboard?.instantiateViewControllerWithIdentifier(kViewControllerIdenifiers.ConfirmationVC.rawValue) as ConfirmationViewController
                             self.presentViewController(toVC, animated: true, completion: nil)
                         }
